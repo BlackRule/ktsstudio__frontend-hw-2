@@ -5,4 +5,4 @@ export enum LoaderSize {
     m = 'm',
     l = 'l'
 }
-export const Loader: React.FC = () => <div data-testid={Locators.LOADER} />;
+export const Loader: React.FC<{loading:boolean}> = ({loading = true}) => loading?<div data-testid={Locators.LOADER} />:null;

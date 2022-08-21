@@ -37,7 +37,7 @@
         ],
         "rules": {
           "import/no-anonymous-default-export": "off",
-          "quotes": ["single", "warn"]
+          "quotes": ["warn"]
         }
       }
     ]
