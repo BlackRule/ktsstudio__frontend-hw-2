@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import classNames from "classnames";
-import './MultiDropdown.css'
+import styles from './MultiDropdown.module.scss'
 
 export type Option = {
   key: string;
@@ -22,14 +22,14 @@ export const MultiDropdown = ({options, value, onChange, pluralizeOptions,disabl
   function includes(opts:Option[],opt:Option){
     return opts.some((o)=>opt.key===o.key)
   }
-  return (<div className="MultiDropdown">
-    <div className={"value"} onClick={(e) => {
+  return (<div className={styles.MultiDropdown}>
+    <div className={styles.value} onClick={(e) => {
       if(disabled) return
       setIsOpen((v)=>!v)
     }}>{pluralizeOptions(value)}</div>
-    {isOpen && !disabled ? <div className="optionsParent">
+    {isOpen && !disabled ? <div className={styles.optionsParent}>
       {options.map((option) =>
-          <div key={option.key} className={classNames("option", {"selected": includes(value,option)})} onClick={(e) => {
+          <div key={option.key} className={classNames(styles.option, {[styles.selected]: includes(value,option)})} onClick={(e) => {
             if(!includes(value,option)){
               onChange([...value,option])
             }

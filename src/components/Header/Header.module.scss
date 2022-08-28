@@ -1,0 +1,48 @@
+@use '~style/style';
+.Header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & a{
+    text-decoration: none;
+  }
+  padding: 0 100px;
+  border-bottom: 1px #f3f3f3 solid;
+}
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+}
+
+.nav{
+  display: flex;
+  gap: 60px;
+  & a{
+    padding: 44px 0;
+    &.current{
+      color: #{style.$color-primary};
+      border-bottom: 3px solid #{style.$color-primary};
+    }
+  }
+}
+
+@mixin icon(){
+  width: 30px;
+  height: 30px;
+}
+
+.right{
+  display: flex;
+  gap: 24px;
+}
+.bag{
+  @include icon;
+  background-image: url('./img/bag.svg');
+}
+.user{
+  @include icon;
+  background-image: url('./img/user.svg');
+}

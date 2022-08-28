@@ -1,0 +1,26 @@
+@use '~style/style';
+
+.Button{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 16px 28px;
+  font-weight: 700;
+  font-size: 18px;
+  &:hover{
+    opacity: 0.7;
+  }
+  &:disabled{
+    background-color: #D9D9D9;
+  }
+}
+.button-skin_primary{
+  background-color: #{style.$color-primary};
+  color: white;
+  border: 0;
+}
+.button-skin_secondary{
+  background-color: #{style.$color-white};
+  color: #{style.$color-black};
+  border: 1px solid white;
+}

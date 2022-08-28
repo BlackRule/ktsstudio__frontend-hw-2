@@ -1,0 +1,11 @@
+@use '~style/style';
+
+.Input{
+  border: 0;
+  padding: 26px 30px;
+  box-shadow: 0 4px 120px rgba(175, 173, 181, 0.15);
+}
+
+.Input:focus{
+  outline: 1px solid #{style.$color-primary};
+}

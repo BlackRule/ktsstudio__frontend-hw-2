@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Card } from '../components/Card/Card';
@@ -104,3 +105,5 @@ describe('Тестирование компонента Card', () => {
     expect(mockOnClick).toBeCalledTimes(1);
   });
 });
+*/
+export const A=5

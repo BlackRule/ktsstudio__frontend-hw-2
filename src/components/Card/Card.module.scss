@@ -1,0 +1,40 @@
+@use '~style/style';
+
+
+.Card{
+  max-width: 394px;
+  @media(max-width: 425px){
+    max-width: 156px;
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+.img{
+  max-width: 100%;
+}
+.category{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  color: #{style.$color-gray};
+}
+.title{
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: 0.01em;
+  color: #{style.$color-black};
+}
+.description{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 180%;
+   color: #{style.$color-gray};
+}
+.price{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 130%;
+   color: #{style.$color-black};
+}

@@ -1,0 +1,49 @@
+@use '~style/style';
+
+.Product{
+  display: flex;
+  gap: 50px;
+}
+.img{
+  //max-width: 100%;TODO
+  max-width: 600px;
+  flex-grow: 1;
+}
+.color-txt{
+
+}
+.colors{
+  display: flex;
+}
+.color{
+  width: 50px;
+  height: 50px;
+}
+.category{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  color: #{style.$color-gray};
+}
+.title{
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: 0.01em;
+  color: #{style.$color-black};
+}
+.description{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 180%;
+  color: #{style.$color-gray};
+}
+.price{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 130%;
+  color: #{style.$color-black};
+}
+.buttons{
+  display: flex;
+}

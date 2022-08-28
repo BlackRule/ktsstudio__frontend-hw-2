@@ -1,0 +1,12 @@
+.Search-bar{
+  display: flex;
+
+  align-items: center;
+  padding: 15px 28px;
+  box-shadow: 0 4px 120px rgba(175, 173, 181, 0.15);
+}
+.icon{
+  width: 32px;
+  height: 32px;
+  background-image: url("./img/search.svg");
+}
