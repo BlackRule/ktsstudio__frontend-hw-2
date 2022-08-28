@@ -1,9 +1,13 @@
+@use '~style/style';
 .Filter{
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 27px 52px;
-  box-shadow: 0 4px 120px rgba(175, 173, 181, 0.15);
+  @include style.drop-shadow;
+  @media(max-width: 1023px){
+    display: none;
+  }
 }
 .icon{
   width: 30px;

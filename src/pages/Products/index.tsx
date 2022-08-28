@@ -7,6 +7,7 @@ import styles from './index.module.scss'
 import SearchBar from "./components/SearchBar";
 import Filter from "./components/Filter";
 import PagePadding from "~components/PagePadding/PagePadding";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const Products = ()=>{
     const [products,setProducts]=useState<Product[]>()
@@ -23,8 +24,8 @@ const Products = ()=>{
                     to see our old products please enter the name of the item</p>
                 <div className={styles['top-bar']}><SearchBar style={{flexGrow: 1}}/><Filter/></div>
                 <div className={styles['total-product']}>
-                    <span className={styles['total-product__txt']}>Total Product</span>
-                    <span className={styles['total-product__count']}>184{/*TODO API*/}</span>
+                    <span className={styles['total-product__txt']}>Total Products</span>
+                    <span className={styles['total-product__count']}>{products?.length}</span>
                 </div>
                 <div className={styles['products-grid']}>
                     {products?.map((product) =>

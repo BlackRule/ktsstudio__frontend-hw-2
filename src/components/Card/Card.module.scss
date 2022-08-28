@@ -18,6 +18,10 @@
   font-size: 18px;
   line-height: 23px;
   color: #{style.$color-gray};
+  margin-top: 26px;
+  @media(max-width: 1023px){
+    font-size: 12px;
+  }
 }
 .title{
   font-weight: 700;
@@ -25,16 +29,32 @@
   line-height: 34px;
   letter-spacing: 0.01em;
   color: #{style.$color-black};
+  margin-top: 14px;
+  //Because of "LC49HG90DMNXZA" text..
+  overflow-wrap: anywhere;
+  @media(max-width: 1023px){
+    font-size: 14px;
+  }
 }
 .description{
   font-weight: 500;
   font-size: 18px;
   line-height: 180%;
-   color: #{style.$color-gray};
+  color: #{style.$color-gray};
+  margin-top: 6px;
+  //Because of "Casual/Office/Beach/School/Home/Street." text..
+  overflow-wrap: anywhere;
+  @media(max-width: 1023px){
+    font-size: 12px;
+  }
 }
 .price{
   font-weight: 700;
   font-size: 24px;
   line-height: 130%;
-   color: #{style.$color-black};
+  color: #{style.$color-black};
+  margin-top: 18px;
+  @media(max-width: 1023px){
+    font-size: 14px;
+  }
 }

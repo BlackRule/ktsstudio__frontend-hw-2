@@ -2,7 +2,12 @@ import axios, {Axios, AxiosResponse} from "axios";
 import Product from "~models/Product";
 
 export default class PostService{
-    static async getProductsResponse(){
+    static async getProductsResponse(category?:Product["category"],limit=-1){
+       if(category)
+       return  axios.get<Product[]>(`https://fakestoreapi.com/products/category/${category}`,
+           {
+               ...(limit>0 && {params: {limit: limit}})
+           })
        return  axios.get<Product[]>('https://fakestoreapi.com/products')
     }
     static async getProductResponse(id: string){

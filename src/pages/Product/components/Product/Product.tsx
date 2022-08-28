@@ -1,7 +1,7 @@
 import ProductModel from "~models/Product";
 import styles from './Product.module.scss'
 import {HTMLAttributes} from "react";
-import {Button} from "~components/Button/Button";
+import {Button, ButtonSkin} from "~components/Button/Button";
 
 type ProductProps = React.PropsWithChildren<{
     product:ProductModel
@@ -28,7 +28,7 @@ const Product=({product}:ProductProps)=>{
                 <div className={styles.price}>${product.price}</div>
                 <div className={styles.buttons}>
                     <Button>Buy Now</Button>
-                    <Button>Add to Chart</Button>
+                    <Button skin={ButtonSkin.secondary}>Add to Chart</Button>
                 </div>
             </div>
         </section>

@@ -3,7 +3,18 @@
 .Input{
   border: 0;
   padding: 26px 30px;
-  box-shadow: 0 4px 120px rgba(175, 173, 181, 0.15);
+  @include style.drop-shadow;
+  @media(max-width: 1023px){
+    padding: 14px;
+  }
+  @media(max-width: 375px){
+    //TODO не могу понять почему это требуется. Без этого расширяется неадекватно
+    max-width: 181px;
+  }
+  @media(max-width: 320px){
+    //TODO не могу понять почему это требуется. Без этого расширяется неадекватно
+    max-width: 126px;
+  }
 }
 
 .Input:focus{

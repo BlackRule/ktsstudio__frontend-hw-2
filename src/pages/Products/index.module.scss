@@ -9,12 +9,19 @@
   font-weight: 700;
   font-size: 64px;
   margin-bottom: 20px;
+  @media(max-width: 1023px){
+    font-size: 26px;
+  }
 }
 .p1{
   max-width: 600px;
   text-align: center;
-  color: #{style.$color-primary};
+  color: #{style.$color-gray};
   margin-bottom: 80px;
+  font-size: 18px;
+  @media(max-width: 1023px){
+    font-size: 14px;
+  }
 }
 .top-bar{
   display: flex;
@@ -30,12 +37,16 @@
 .total-product__txt{
   font-weight: 700;
   font-size: 44px;
+  @media(max-width: 1023px){
+    font-size: 18px;
+  }
 }
 .total-product__count{
   padding: 5px 16px;
   background: #F9F9F9;
   border-radius: 20px;
   color: #{style.$color-primary};
+  font-weight: 700;
 }
 .products-grid{
   display: flex;
@@ -44,5 +55,8 @@
   gap: 29px;
   & a{
     text-decoration: none;
+  }
+  @media(max-width: 1023px){
+    gap: 15px;
   }
 }

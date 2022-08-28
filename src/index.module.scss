@@ -1,9 +1,7 @@
 @import "~style/fonts/fonts";
 .App{
-  width: 1440px;
-  margin: auto;
-  //In prod remove 'cause it takes 2px!:
-  border: red 1px solid;
+  display: flex;
+  flex-direction: column;
 }
 body{
   font-family: Eudoxus-Sans, sans-serif;

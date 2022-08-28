@@ -10,7 +10,7 @@
 }
 .value{
     padding: 27px 62px;
-    box-shadow: 0 4px 120px rgba(175, 173, 181, 0.15);
+    @include drop-shadow;
 
 }
 .optionsParent{

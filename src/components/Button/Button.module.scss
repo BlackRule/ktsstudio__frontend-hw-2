@@ -7,11 +7,16 @@
   padding: 16px 28px;
   font-weight: 700;
   font-size: 18px;
+  justify-content: center;
   &:hover{
     opacity: 0.7;
   }
   &:disabled{
     background-color: #D9D9D9;
+  }
+  @media(max-width: 1023px){
+    padding: 10px 26px;
+    font-size: 14px;
   }
 }
 .button-skin_primary{
@@ -22,5 +27,5 @@
 .button-skin_secondary{
   background-color: #{style.$color-white};
   color: #{style.$color-black};
-  border: 1px solid white;
+  border: 1px solid #{style.$color-line};
 }
