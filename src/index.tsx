@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import styles from './index.module.scss'
-import Products from "~pages/Products";
-import Product from "~pages/Product";
-import {Header} from "~components/Header/Header";
+import Products from "@pages/Products";
+import Product from "@pages/Product";
+import {Header} from "@components/Header/Header";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

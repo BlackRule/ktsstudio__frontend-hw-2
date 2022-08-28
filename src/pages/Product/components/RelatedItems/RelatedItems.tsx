@@ -1,9 +1,9 @@
-import ProductModel from "~models/Product";
+import ProductModel from "@models/Product";
 import styles from './RelatedItems.module.scss'
 import {HTMLAttributes, useEffect, useState} from "react";
-import PostService from "~api/ProductService";
+import PostService from "@api/ProductService";
 import {Link} from "react-router-dom";
-import {Card} from "~components/Card/Card";
+import {Card} from "@components/Card/Card";
 
 type RelatedItemsProps = React.PropsWithChildren<{
     category:ProductModel["category"]

@@ -1,5 +1,5 @@
 import React from 'react';
-import img1 from '~media/img1.png'
+import img1 from '@media/img1.png'
 
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 

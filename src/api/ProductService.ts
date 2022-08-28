@@ -1,5 +1,5 @@
 import axios, {Axios, AxiosResponse} from "axios";
-import Product from "~models/Product";
+import Product from "@models/Product";
 
 export default class PostService{
     static async getProductsResponse(category?:Product["category"],limit=-1){

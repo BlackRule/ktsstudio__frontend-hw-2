@@ -1,7 +1,7 @@
-import ProductModel from "~models/Product";
+import ProductModel from "@models/Product";
 import styles from './Product.module.scss'
 import {HTMLAttributes} from "react";
-import {Button, ButtonSkin} from "~components/Button/Button";
+import {Button, ButtonSkin} from "@components/Button/Button";
 
 type ProductProps = React.PropsWithChildren<{
     product:ProductModel

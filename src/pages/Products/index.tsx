@@ -1,13 +1,12 @@
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
-import Product from "~models/Product";
-import PostService from "~api/ProductService";
-import {Card} from "~components/Card/Card";
+import Product from "@models/Product";
+import PostService from "@api/ProductService";
+import {Card} from "@components/Card/Card";
 import styles from './index.module.scss'
 import SearchBar from "./components/SearchBar";
 import Filter from "./components/Filter";
-import PagePadding from "~components/PagePadding/PagePadding";
-import useWindowSize from "../../hooks/useWindowSize";
+import PagePadding from "@components/PagePadding/PagePadding";
 
 const Products = ()=>{
     const [products,setProducts]=useState<Product[]>()

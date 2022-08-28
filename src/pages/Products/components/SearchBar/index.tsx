@@ -1,8 +1,8 @@
 import styles from './index.module.scss'
-import {Input} from "~components/Input/Input";
-import {Button} from "~components/Button/Button";
+import {Input} from "@components/Input/Input";
+import {Button} from "@components/Button/Button";
 import {HTMLAttributes} from "react";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "@hooks/useWindowSize";
 
 const SearchBar = (props: HTMLAttributes<HTMLDivElement>)=>{
     const {width,height:_}=useWindowSize()

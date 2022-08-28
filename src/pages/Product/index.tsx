@@ -1,10 +1,10 @@
 import {useLocation, useNavigate, useParams} from "react-router-dom"
 import {useEffect, useState} from "react"
-import PostService from "~api/ProductService"
-import ProductModel from '~models/Product'
+import PostService from "@api/ProductService"
+import ProductModel from '@models/Product'
 import styles from './Product.module.scss'
 import Product from "./components/Product/Product"
-import PagePadding from "~components/PagePadding/PagePadding";
+import PagePadding from "@components/PagePadding/PagePadding";
 import RelatedItems from "./components/RelatedItems/RelatedItems";
 
 const ProductPage = () => {

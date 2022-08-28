@@ -1,4 +1,4 @@
-import {Loader, LoaderSize} from "~components/Loader/Loader";
+import {Loader, LoaderSize} from "@components/Loader/Loader";
 import styles from './Button.module.scss'
 
 const classNames = require('classnames');

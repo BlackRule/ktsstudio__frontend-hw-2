@@ -11,13 +11,17 @@ https://fakestoreapi.com/products/categories
 Получение списка товаров определенной категории:
 https://fakestoreapi.com/products/category/{категория}
 2) Бесконечный скролл
+TODO Linter
 TODO шрифты возможно должен был каждый компонент себе импортить. Или надо в StoryBook поменять default шрифт
-TODO mixin control-drop-shadow filter: drop-shadow(0px 4px 120px rgba(175, 173, 181, 0.15));
 TODO стилизовать чекбокс
-TODO АДАПТИВ!!
 TODO см TODO ВЕЗДЕ (не только здесь)
 TODO Дополнительно: реализован "бесконечный скрол" или реализована пагинация с помощью кнопок с количеством страниц. Для реализации бесконечного скрола можно использовать дополнительные библиотеки.
-TODO переписать alias'ы с ~ на @ про кот-ю рассказывается в KTS
-TODO Linter
 TODO вынести повторяющиеся куски
-TODO привести к единообразию имена а не index.* и Component.* и мб кавычки single double
+TODO привести к единообразию имена. А не index.* и Component.* и мб кавычки single double
+TODO Посмотреть может зависимости для Storybook установил без флага -D (devDependencies)
+-------tsconfig.paths.json---------
+//"@config/*": ["src/config/*"],
+//"@utils/*": ["src/utils/*"]
+//TODO rename to styles
+"@style/*": ["src/style/*"],
+----------------
