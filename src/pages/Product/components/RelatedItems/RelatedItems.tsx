@@ -21,7 +21,7 @@ const RelatedItems=({category}:RelatedItemsProps)=>{
             <div className={styles.grid}>
                 {products?
                     products.map((product) =>
-                    (<Link to={`/product/${product.id}`}>
+                    (<Link key={product.id} to={`/product/${product.id}`}>
                         <Card {...product}/>
                     </Link>)
                     ):null

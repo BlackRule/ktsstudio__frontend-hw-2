@@ -3,7 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { WithLoader } from './WithLoader';
-import img1 from "../../media/img1.png";
+import img1 from "@media/img1.png";
 import {Card, CardProps} from "../Card/Card";
 
 export default {

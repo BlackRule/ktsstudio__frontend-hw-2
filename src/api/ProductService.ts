@@ -13,4 +13,7 @@ export default class PostService{
     static async getProductResponse(id: string){
         return  axios.get<Product>(`https://fakestoreapi.com/products/${id}`)
     }
+    static async getCategoriesResponse(){
+        return  axios.get<string[]>(`https://fakestoreapi.com/products/categories`)
+    }
 }

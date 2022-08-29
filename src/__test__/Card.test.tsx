@@ -1,7 +1,7 @@
 /*
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Card } from '../components/Card/Card';
+import { Card } from '@components/Card/Card';
 import userEvent from '@testing-library/user-event';
 import { CARD_SUBTITLE, CARD_TITLE, Locators } from './constants';
 

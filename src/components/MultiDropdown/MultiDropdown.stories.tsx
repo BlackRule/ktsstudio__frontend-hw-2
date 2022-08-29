@@ -26,9 +26,9 @@ export const Default_ = Default.bind({});
 Default_.args = {
     disabled: false,
     options: options,
-    pluralizeOptions: (elements: Option[]) => {
+    generateValueElement: (elements: Option[]) => {
         let s = elements.map((el: Option) => el.key).join()
-        return s.length > 0 ? s : 'Category'
+        return (props)=><div {...props}>{s.length > 0 ? s : 'Category'}</div>
     },
     value: [],
 }

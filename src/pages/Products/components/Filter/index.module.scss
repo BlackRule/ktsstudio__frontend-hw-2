@@ -1,16 +1,23 @@
 @use '@style/style';
 .Filter{
+  @media(max-width: 1023px){
+    display: none;
+  }
+}
+.value{
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 27px 52px;
   @include style.drop-shadow;
-  @media(max-width: 1023px){
-    display: none;
-  }
 }
 .icon{
   width: 30px;
   height: 30px;
   background-image: url("./img/filter.svg");
+}
+.options{
+  //z-index: 2;
+  background-color: white;
+  cursor: default;
 }

@@ -1,0 +1,13 @@
+@use '@style/style';
+.PageNumbers{
+  display: flex;
+}
+.page-number{
+  min-width: 38px;
+  min-height: 42px;
+  border: 1px solid black;
+}
+
+.selected{
+  background-color: #{style.$color-primary};
+}

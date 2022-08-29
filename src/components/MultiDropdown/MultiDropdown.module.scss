@@ -4,13 +4,14 @@
     position: relative;
     text-align: center;
     filter: drop-shadow(0px 4px 120px rgba(175, 173, 181, 0.15));
-    &:active,&:focus-within{
+    border: 1px solid transparent;
+    &:active,&:focus{
         border: 1px solid #{style.$color-primary};
     }
 }
 .value{
     padding: 27px 62px;
-    @include drop-shadow;
+    @include style.drop-shadow;
 
 }
 .optionsParent{

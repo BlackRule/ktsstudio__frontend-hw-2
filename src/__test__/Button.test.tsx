@@ -1,11 +1,11 @@
 /*
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Button, ButtonColor } from '../components/Button/Button';
+import { Button, ButtonColor } from '@components/Button/Button';
 import { BUTTON_TEXT, Locators } from './constants';
 import userEvent from '@testing-library/user-event';
 
-jest.mock('../components/Loader/Loader.tsx', () => require('./MockLoader'));
+jest.mock('@components/Loader/Loader.tsx', () => require('./MockLoader'));
 
 describe('Тестирование компонента Button', () => {
   test('Текстовый children пробрасывается корректно', () => {

@@ -5,7 +5,7 @@ import {
   MultiDropdown,
   MultiDropdownProps,
   Option,
-} from '../components/MultiDropdown/MultiDropdown';
+} from '@components/MultiDropdown/MultiDropdown';
 
 const options: Option[] = [
   { key: 'msk', value: 'Москва' },
@@ -13,8 +13,9 @@ const options: Option[] = [
   { key: 'ekb', value: 'Екатеринбург' },
 ];
 
-const defaultPluralizeOptions = (elements: Option[]) =>
-  elements.map((el: Option) => el.key).join();
+const defaultPluralizeOptions = (elements: Option[]) => {
+  return (props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>)=><div {...props}>{elements.map((el: Option) => el.key).join()}</div>
+}
 
 const WrappedDropdown: React.FC<
   Omit<MultiDropdownProps, 'value' | 'onChange'>
@@ -24,7 +25,7 @@ const WrappedDropdown: React.FC<
 };
 
 describe('Тестирование компонента MultiDropdown', () => {
-  test('Проверка отображения результата выполнения pluralizeOptions', () => {
+  test('Проверка отображения результата выполнения generateValueElement', () => {
     const pluralizeOptions = jest
       .fn()
       .mockImplementation(defaultPluralizeOptions);
@@ -33,7 +34,7 @@ describe('Тестирование компонента MultiDropdown', () => {
         onChange={() => {}}
         value={options}
         options={options}
-        pluralizeOptions={pluralizeOptions}
+        generateValueElement={pluralizeOptions}
       />
     );
 
@@ -47,7 +48,7 @@ describe('Тестирование компонента MultiDropdown', () => {
         onChange={() => {}}
         value={[]}
         options={options}
-        pluralizeOptions={pluralizeOptions}
+        generateValueElement={pluralizeOptions}
       />
     );
 
@@ -61,7 +62,7 @@ describe('Тестирование компонента MultiDropdown', () => {
         onChange={mockOnChange}
         value={options}
         options={options}
-        pluralizeOptions={defaultPluralizeOptions}
+        generateValueElement={defaultPluralizeOptions}
       />
     );
 
@@ -78,7 +79,7 @@ describe('Тестирование компонента MultiDropdown', () => {
         onChange={mockOnChange}
         value={[]}
         options={options}
-        pluralizeOptions={defaultPluralizeOptions}
+        generateValueElement={defaultPluralizeOptions}
       />
     );
 
@@ -89,7 +90,7 @@ describe('Тестирование компонента MultiDropdown', () => {
   test('Проверка открытия/закрытия списка опций при клике', () => {
     const title = 'TEST_TITLE';
     render(
-      <WrappedDropdown options={options} pluralizeOptions={() => title} />
+      <WrappedDropdown options={options} generateValueElement={() => (props)=><div {...props}>{title}</div>} />
     );
 
     const dropdownElement = screen.getByText(title);
@@ -107,7 +108,7 @@ describe('Тестирование компонента MultiDropdown', () => {
   test('Отображаются все переданные options', () => {
     const title = 'TEST_TITLE';
     render(
-      <WrappedDropdown options={options} pluralizeOptions={() => title} />
+      <WrappedDropdown options={options} generateValueElement={() => (props)=><div {...props}>{title}</div>} />
     );
 
     const dropdownElement = screen.getByText(title);
@@ -127,7 +128,7 @@ describe('Тестирование компонента MultiDropdown', () => {
   test('При disabled=true не открывается список опций', () => {
     const title = 'TEST_TITLE';
     const { rerender } = render(
-      <WrappedDropdown options={options} pluralizeOptions={() => title} />
+      <WrappedDropdown options={options} generateValueElement={() => (props)=><div {...props}>{title}</div>} />
     );
 
     const dropdownElement = screen.getByText(title);
@@ -141,7 +142,7 @@ describe('Тестирование компонента MultiDropdown', () => {
     rerender(
       <WrappedDropdown
         options={options}
-        pluralizeOptions={() => title}
+        generateValueElement={() => (props)=><div {...props}>{title}</div>}
         disabled
       />
     );
@@ -160,7 +161,7 @@ describe('Тестирование компонента MultiDropdown', () => {
         onChange={mockOnChange}
         value={[]}
         options={options}
-        pluralizeOptions={() => title}
+        generateValueElement={() => (props)=><div {...props}>{title}</div>}
       />
     );
 
@@ -183,7 +184,7 @@ describe('Тестирование компонента MultiDropdown', () => {
         onChange={mockOnChange}
         value={options}
         options={options}
-        pluralizeOptions={defaultPluralizeOptions}
+        generateValueElement={defaultPluralizeOptions}
       />
     );
 
@@ -203,7 +204,7 @@ describe('Тестирование компонента MultiDropdown', () => {
         onChange={() => {}}
         value={[]}
         options={options}
-        pluralizeOptions={() => title}
+        generateValueElement={() => (props)=><div {...props}>{title}</div>}
       />
     );
 
@@ -223,7 +224,7 @@ describe('Тестирование компонента MultiDropdown', () => {
         onChange={() => {}}
         value={[]}
         options={[options[0], options[2]]}
-        pluralizeOptions={() => title}
+        generateValueElement={() => (props)=><div {...props}>{title}</div>}
       />
     );
 
