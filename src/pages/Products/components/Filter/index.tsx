@@ -10,14 +10,15 @@ type FilterProps= {
 
 const Filter = ({selectedOptions,onChange}:FilterProps) => {
     useEffect(() => {
-        //TODO handle Error and Loading!!
+        //TODO should fetch only when is opened first time, not when mounted...
+        //TODO handle Error
         PostService.getCategoriesResponse().then((response) => {
                 return setOptions(response.data ? response.data.map((v): Option => ({key: v, value: v})) : [])
             }
         )
 
     },[])
-    const [options, setOptions] = useState<Option[]>([])
+    const [options, setOptions] = useState<Option[]>()
 
     return (
         <MultiDropdown className={styles.Filter} generateValueElement={() => {
@@ -26,7 +27,7 @@ const Filter = ({selectedOptions,onChange}:FilterProps) => {
                 <span>Filter</span></div>
         }} onChange={(v) => {
             onChange(v)
-        }} options={options} value={selectedOptions}
+        }} options={options?options:[]} loading={!options} value={selectedOptions}
         optionsProps={{className:styles.options}} valueProps={{className:styles.value}}/>
     )
 }

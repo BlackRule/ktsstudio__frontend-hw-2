@@ -1,26 +1,23 @@
-import {
-    DetailedHTMLProps,
-    HTMLAttributes,
-    JSXElementConstructor,
-    useState
-} from "react";
+import {ComponentProps, DetailedHTMLProps, HTMLAttributes, JSXElementConstructor, useState} from "react";
 import classNames from "classnames";
 import styles from './MultiDropdown.module.scss'
+import {Button, ButtonSkin} from "@components/Button/Button";
 
 export type Option = {
     key: string;
     value: string;
 };
 
-export type MultiDropdownProps = Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,'onChange'>&{
+type DivProps=DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+
+export type MultiDropdownProps = Omit<ComponentProps<typeof Button>,'onChange'|'value'>&{
     options: Option[];
     value: Option[];
     onChange: (value: Option[]) => void;
-    disabled?: boolean;
     /** Преобразовать выбранные значения в строку. Отображается в дропдауне в качестве выбранного значения */
-    generateValueElement: (options: Option[]) => JSXElementConstructor<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>;
-    valueProps?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-    optionsProps?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+    generateValueElement: (options: Option[]) => JSXElementConstructor<DivProps>;
+    valueProps?: DivProps;
+    optionsProps?: DivProps;
 }
 
 
@@ -40,9 +37,8 @@ export const MultiDropdown = ({
     }
 
     const Value = generateValueElement(value)
-    return (<div {...props} className={styles.MultiDropdown}>
+    return (<Button  {...props} skin={ButtonSkin.secondary} className={classNames(styles.MultiDropdown,props.className)}>
         <Value {...valueProps} className={classNames(valueProps?.className, styles.value)} onClick={(e) => {
-            if (disabled) return
             setIsOpen((v) => !v)
             if (valueProps?.onClick) valueProps.onClick(e)
         }}/>
@@ -59,5 +55,5 @@ export const MultiDropdown = ({
                      }}>{option.value}</div>
             )}
         </div> : null}
-    </div>);
+    </Button>);
 };

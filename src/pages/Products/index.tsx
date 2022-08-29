@@ -9,6 +9,7 @@ import Filter from "./components/Filter";
 import PagePadding from "@components/PagePadding/PagePadding";
 import {Option} from "@components/MultiDropdown/MultiDropdown";
 import PageNumbers from "./components/PageNumbers/PageNumbers";
+import {Loader} from "@components/Loader/Loader";
 
 const Products = ()=>{
     const [allProducts,setAllProducts]=useState<Product[]>()
@@ -19,7 +20,7 @@ const Products = ()=>{
     const totalPages=Math.ceil(totalElements/elementsPerPage)
     const [currentPage,setCurrentPage]=useState<number>(0)
     useEffect(()=>{
-        //TODO handle Error and Loading!!
+        //TODO handle Error
         if(selectedCategories.length===0)
         PostService.getProductsResponse().then((response)=>setAllProducts(response.data))
         else{
@@ -53,11 +54,11 @@ const Products = ()=>{
                     <span className={styles['total-product__count']}>{totalElements}</span>
                 </div>
                 <div className={styles['products-grid']}>
-                    {currentProducts?.map((product) =>
+                    {currentProducts?currentProducts.map((product) =>
                         (<Link key={product.id} to={`/product/${product.id}`}>
                             <Card {...product}/>
                         </Link>)
-                    )}
+                    ):<Loader/>}
                 </div>
                 <PageNumbers totalPages={totalPages} onChange={(cp)=>{
                     setCurrentPage(cp)

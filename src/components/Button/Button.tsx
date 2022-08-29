@@ -19,7 +19,7 @@ export type ButtonProps = React.PropsWithChildren<{
 
 //TODO исправить цвет и margin-right loader'а вместо gap
 export const Button = ({children, loading=false, skin=ButtonSkin.primary, ...props}:ButtonProps) => {
-    props.disabled ||= loading
+    props = {...props,disabled:loading||props.disabled}
     return (<button {...props}
      className={classNames(styles.Button,styles[`button-skin_${skin}`],props?.className)}
     disabled={props.disabled}
