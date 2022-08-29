@@ -22,7 +22,7 @@ const Filter = ({selectedOptions,onChange,...props}:FilterProps) => {
     const [options, setOptions] = useState<Option[]>()
 
     return (
-        <MultiDropdown className={props.className} generateValueElement={() => {
+        <MultiDropdown {...props} generateValueElement={() => {
             return (props) => <div {...props}>
                 <div className={styles.icon}/>
                 <span>Filter</span></div>

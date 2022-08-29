@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Product from "@models/Product";
 import PostService from "@api/ProductService";
@@ -19,6 +19,9 @@ const Products = ()=>{
     const elementsPerPage=6
     const totalPages=Math.ceil(totalElements/elementsPerPage)
     const [currentPage,setCurrentPage]=useState<number>(0)
+    const [searchParams, setSearchParams] = useSearchParams();
+    //TODO could be passed back and forth like /?p=1&c=a,b If I had time
+    console.log(Array.from(searchParams.entries()))
     useEffect(()=>{
         //TODO handle Error
         if(selectedCategories.length===0)

@@ -30,7 +30,8 @@
 }
 .Filter{
   @media(max-width: 1023px){
-    display: none;
+    //fixme А без important можно? :(
+    display: none!important;
   }
 }
 .total-product{
