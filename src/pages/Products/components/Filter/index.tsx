@@ -1,14 +1,15 @@
 import styles from './index.module.scss'
 import {MultiDropdown, Option} from "@components/MultiDropdown/MultiDropdown";
-import {useEffect, useState} from "react";
+import {ComponentProps, useEffect, useState} from "react";
 import PostService from "@api/ProductService";
+import {Button} from "@components/Button/Button";
 
-type FilterProps= {
+type FilterProps= Omit<ComponentProps<typeof Button>,'onChange'>&{
     onChange:(value: Option[]) => void,
     selectedOptions: Option[]
 }
 
-const Filter = ({selectedOptions,onChange}:FilterProps) => {
+const Filter = ({selectedOptions,onChange,...props}:FilterProps) => {
     useEffect(() => {
         //TODO should fetch only when is opened first time, not when mounted...
         //TODO handle Error
@@ -21,7 +22,7 @@ const Filter = ({selectedOptions,onChange}:FilterProps) => {
     const [options, setOptions] = useState<Option[]>()
 
     return (
-        <MultiDropdown className={styles.Filter} generateValueElement={() => {
+        <MultiDropdown className={props.className} generateValueElement={() => {
             return (props) => <div {...props}>
                 <div className={styles.icon}/>
                 <span>Filter</span></div>

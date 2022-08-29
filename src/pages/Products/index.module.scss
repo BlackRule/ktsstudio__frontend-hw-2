@@ -28,6 +28,11 @@
   gap: 29px;
   width: 100%;
 }
+.Filter{
+  @media(max-width: 1023px){
+    display: none;
+  }
+}
 .total-product{
   display: flex;
   align-self: flex-start;

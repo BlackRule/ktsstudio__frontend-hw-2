@@ -45,7 +45,7 @@ const Products = ()=>{
                     to see our old products please enter the name of the item</p>
                 <div className={styles['top-bar']}>
                     <SearchBar style={{flexGrow: 1}}/>
-                    <Filter selectedOptions={selectedCategories.map(stringsToOptions)} onChange={(opts)=>{
+                    <Filter className={styles.Filter} selectedOptions={selectedCategories.map(stringsToOptions)} onChange={(opts)=>{
                         setSelectedCategories(opts.map(optionsToStrings))
                     }}/>
                 </div>
