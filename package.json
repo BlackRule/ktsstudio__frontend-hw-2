@@ -78,6 +78,7 @@
     "react-app-rewire-alias": "^1.1.7",
     "react-app-rewired": "^2.2.1",
     "sass": "^1.54.3",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "webpack": "^5.74.0"
   }
 }
