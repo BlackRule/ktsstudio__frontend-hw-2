@@ -4,6 +4,7 @@ TODO стилизовать чекбокс
 TODO см TODO ВЕЗДЕ (не только здесь)
 TODO вынести повторяющиеся куски
 TODO привести к единообразию имена. А не index.* и Component.* и мб кавычки single double
+И Component.jsx и index.js кот-й экспортирует
 TODO Посмотреть может зависимости для Storybook установил без флага -D (devDependencies)
 -------tsconfig.paths.json---------
 //"@config/*": ["src/config/*"],

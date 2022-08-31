@@ -30,7 +30,7 @@
 }
 .Filter{
   @media(max-width: 1023px){
-    //fixme А без important можно? :(
+    //fixme https://github.com/BlackRule/ktsstudio__frontend-hw-2/issues/4
     display: none!important;
   }
 }
