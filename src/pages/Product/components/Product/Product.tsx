@@ -1,4 +1,4 @@
-import ProductModel from "@models/Product";
+import {ProductModel} from "@models/products";
 import styles from './Product.module.scss'
 import {HTMLAttributes} from "react";
 import {Button, ButtonSkin} from "@components/Button/Button";

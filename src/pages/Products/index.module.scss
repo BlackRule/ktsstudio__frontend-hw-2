@@ -28,6 +28,9 @@
   gap: 29px;
   width: 100%;
 }
+.SearchBar{
+  flex-grow: 1;
+}
 .Filter{
   @media(max-width: 1023px){
     //fixme https://github.com/BlackRule/ktsstudio__frontend-hw-2/issues/4

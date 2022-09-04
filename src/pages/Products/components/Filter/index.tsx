@@ -10,7 +10,7 @@ type FilterProps= Omit<ComponentProps<typeof Button>,'onChange'>&{
 }
 
 const Filter = ({selectedOptions,onChange,...props}:FilterProps) => {
-    useEffect(() => {
+    /*TODO useEffect(() => {
         //TODO should fetch only when is opened first time, not when mounted...
         //TODO handle Error
         PostService.getCategoriesResponse().then((response) => {
@@ -18,7 +18,7 @@ const Filter = ({selectedOptions,onChange,...props}:FilterProps) => {
             }
         )
 
-    },[])
+    },[])*/
     const [options, setOptions] = useState<Option[]>()
 
     return (

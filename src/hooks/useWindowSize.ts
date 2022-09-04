@@ -1,5 +1,19 @@
 import { useEffect, useState } from "react";
-import { debounce } from "lodash";
+function debounce(f:(...args:any[])=>void, ms:number) {
+
+    let isCooldown = false;
+
+    return function(...args:any[]) {
+        if (isCooldown) return;
+
+        f(args)
+
+        isCooldown = true;
+
+        setTimeout(() => isCooldown = false, ms);
+    };
+
+}
 
 export interface Size {
     width: number; //TODO  | undefined google for it with SSR

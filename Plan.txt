@@ -14,3 +14,4 @@ TODO Посмотреть может зависимости для Storybook у�
 ----------------
 TODO сделать generateValueElement: (options: Option[]) => JSXElementConstructor<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>|string;
 TODO Make possible to click outside MDdown to close it. Handle isFocused somehow
+

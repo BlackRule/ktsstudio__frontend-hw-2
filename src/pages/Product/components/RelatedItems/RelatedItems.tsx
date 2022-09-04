@@ -1,4 +1,4 @@
-import ProductModel from "@models/Product";
+import {ProductModel} from "@models/products";
 import styles from './RelatedItems.module.scss'
 import {HTMLAttributes, useEffect, useState} from "react";
 import PostService from "@api/ProductService";
@@ -12,9 +12,9 @@ type RelatedItemsProps = React.PropsWithChildren<{
 const RelatedItems=({category}:RelatedItemsProps)=>{
     const [products, setProducts] = useState<ProductModel[]>()
 
-    useEffect(() => {
+   /*TODO useEffect(() => {
             PostService.getProductsResponse(category).then((response)=>setProducts(response.data))
-    }, [])
+    }, [])*/
     return (
         <section className={styles.RelatedItems}>
             <div className={styles.txt}>Related Items</div>

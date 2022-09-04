@@ -1,7 +1,7 @@
 import {useLocation, useNavigate, useParams} from "react-router-dom"
 import {useEffect, useState} from "react"
 import PostService from "@api/ProductService"
-import ProductModel from '@models/Product'
+import {ProductModel} from '@models/products'
 import styles from './Product.module.scss'
 import Product from "./components/Product/Product"
 import PagePadding from "@components/PagePadding/PagePadding";
@@ -12,13 +12,13 @@ const ProductPage = () => {
     const [product, setProduct] = useState<ProductModel>()
     const navigate = useNavigate()
     const location = useLocation()
-    useEffect(() => {
+    /*TODOuseEffect(() => {
         console.log(URLparams.id)
         if (typeof (URLparams.id) !== "string") navigate("/")
         else
             PostService.getProductResponse(URLparams.id).then((response)=>setProduct(response.data))
 
-    },[location])
+    },[location])*/
     return (
         <PagePadding>
             {product ?<>

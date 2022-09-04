@@ -8,7 +8,10 @@
       "@models/*": ["src/models/*"],
       "@media/*": ["src/media/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@config/*": ["src/config/*"],
+      "@utils/*": ["src/utils/*"],
+      "@store/*": ["src/store/*"]
     }
   }
 }

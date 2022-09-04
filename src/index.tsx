@@ -5,14 +5,16 @@ import styles from './index.module.scss'
 import Products from "@pages/Products";
 import Product from "@pages/Product";
 import {Header} from "@components/Header/Header";
+import '@config/configureMobX'
+import {useQueryParamsStoreInit} from "@store/RootStore/hooks/useQueryParamsStoreInit";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 const App=()=>{
+    useQueryParamsStoreInit()
     return (
-        <BrowserRouter>
         <div className={styles.App}>
             <Header/>
             <Routes>
@@ -23,14 +25,16 @@ const App=()=>{
                 </Route>
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
-
         </div>
-        </BrowserRouter>
     )
 }
 
 root.render(
-  <React.StrictMode>
+    <BrowserRouter>
+
+    <React.StrictMode>
       <App/>
   </React.StrictMode>
+    </BrowserRouter>
+
 );
