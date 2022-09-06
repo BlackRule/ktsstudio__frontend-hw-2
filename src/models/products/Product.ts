@@ -1,4 +1,5 @@
 import {RatingApi, RatingModel, normalizeRating} from "./rating";
+import {log} from "@utils/console";
 
 export type ProductApi = {
     id:number,
@@ -20,12 +21,14 @@ export type ProductModel = {
     rating: RatingModel
 }
 
-export const normalizeProduct=(from:ProductApi):ProductModel=>({
-    id:from.id,
-    title:from.title,
-    description:from.description,
-    category:from.category,
-    price:from.price,
-    image:from.image,
-    rating:normalizeRating(from.rating)
-})
+export const normalizeProduct=(from:ProductApi):ProductModel=> {
+    return ({
+        id: from.id,
+        title: from.title,
+        description: from.description,
+        category: from.category,
+        price: from.price,
+        image: from.image,
+        rating: normalizeRating(from.rating)
+    });
+}

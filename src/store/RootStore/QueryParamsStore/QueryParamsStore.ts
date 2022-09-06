@@ -2,6 +2,9 @@ import {action, makeObservable, observable} from "mobx";
 import * as qs from "qs";
 
 type PrivateFields = "_params";
+type ValueOf<T> = T[keyof T];
+
+
 export default class QueryParamsStore {
     private _params: qs.ParsedQs = {}
     private _search = ""
@@ -9,12 +12,16 @@ export default class QueryParamsStore {
     constructor() {
         makeObservable<QueryParamsStore, PrivateFields>(this, {
             _params: observable.ref,
-            setSearch: action
+            setSearch: action,
         })
     }
 
-    getParam(key: string): undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[] {
+    getParam(key: string){
         return this._params[key]
+    }
+
+    getParams() {
+        return this._params
     }
 
     setSearch(search: string) {
@@ -23,5 +30,10 @@ export default class QueryParamsStore {
             this._search = search
             this._params = qs.parse(search)
         }
+    }
+
+    getNewURL=(paramName:string,value:ValueOf<qs.ParsedQs>):string=>{
+        const n={...this.getParams(),[paramName]:value}
+        return qs.stringify(n,{addQueryPrefix:true})
     }
 }

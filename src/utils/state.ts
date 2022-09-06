@@ -1,4 +1,4 @@
-export enum Loading{
+export enum State{
     initial,
     loading,
     error,

@@ -1,94 +1,149 @@
 import {GetProductsListParams, IProductsStore} from "./types";
 import {ILocalStore} from "@utils/useLocalStore";
-import {Loading} from "@utils/loading";
+import {State} from "@utils/state";
 import {action, computed, makeObservable, observable, reaction, runInAction} from "mobx";
 import {normalizeProduct, ProductModel} from "@models/products";
 import {log} from "@utils/console";
-import {
-    CollectionModel,
-    getInitialCollectionModel,
-    linearizeCollection,
-    normalizeCollection
-} from "@models/shared/collection";
 import rootStore from "@store/RootStore";
 import ProductService from "@api/ProductService";
 
 
 const BASE_URL = 'https://fakestoreapi.com';
 
-type PrivateFields = '_list' | '_loading'
+type PrivateFields = '_list' | '_state'|'_query'|'_pageNumber'|'_selectedCategories'|'_totalPages'
+
+const elementsPerPage=6
 
 export default class ProductsStore implements IProductsStore, ILocalStore {
-    get loading(): Loading {
-        return this._loading
+    set selectedCategories(value: string[]) {
+        this._selectedCategories = value;
+    }
+    get totalPages(): number {
+        return this._totalPages;
+    }
+    get selectedCategories() {
+        return this._selectedCategories;
+    }
+    get pageNumber() {
+        return this._pageNumber;
+    }
+    get query() {
+        return this._query;
+    }
+    get state(){
+        return this._state
     }
 
-    get list(): ProductModel[] {
-        return linearizeCollection(this._list)
+    get list(){
+        return this._list
     }
 
-    private readonly _apiStore = new ProductService(BASE_URL);
-    private _list: CollectionModel<number, ProductModel> = getInitialCollectionModel()
-    private _loading: Loading = Loading.initial
+    private readonly productService = new ProductService(BASE_URL);
+    private _state: State = State.initial
+    private _list: ProductModel[]=[]
+    private _query=""
+    private _pageNumber=0
+    private _totalPages=0
+    private _selectedCategories:string[]=[]
+
+
+    constructor() {
+        makeObservable<ProductsStore, PrivateFields>(this, {
+            _state: observable,
+            state: computed,
+            _list: observable.ref,
+            list: computed,
+            _query:observable,
+            query:computed,
+            _pageNumber:observable,
+            pageNumber:computed,
+            _totalPages:observable,
+            totalPages:computed,
+            _selectedCategories:observable,
+            selectedCategories:computed,
+            getProductsList: action,
+            searchFilteredList:computed,
+            categoryFilteredList:computed,
+            pagedList:computed,
+        })
+
+    }
+
+
+
+    get categoryFilteredList() {
+        if(this._selectedCategories.length===0) return this._list
+        return this._list.filter((v)=>this._selectedCategories.includes(v.category))
+    }
+    get searchFilteredList(){
+        const list = this.categoryFilteredList
+        if(this._query==="") return list
+        return list.filter(
+            (v)=>v.title.includes(this._query)||v.description.includes(this._query)||
+                v.category.includes(this._query)
+        )
+    }
+
+    get pagedList() {
+        const list = this.searchFilteredList;
+        const pn = this._pageNumber;
+        if(!list) return list
+        return list.slice(pn*elementsPerPage,pn*elementsPerPage+elementsPerPage)
+    }
+
+    private readonly _scReaction = reaction(
+        () => rootStore.query.getParam("sc"),
+        (sc) => {
+            // @ts-ignore TODO
+            this._selectedCategories=sc||[]
+        }
+    )
+
     private readonly _qReaction = reaction(
         () => rootStore.query.getParam("q"),
         (q) => {
-            //TODO
-            log("q change", q);
+            this._query=q as string || "" //fixme as string
         }
     )
     private readonly _pReaction = reaction(
         () => rootStore.query.getParam("p"),
-        (p) => {
-            //TODO
-            log("p change", p);
-        }
-    )
-    private readonly _fReaction = reaction(
-        () => rootStore.query.getParam("f"),
-        (f) => {
-            //TODO
-            log("f change", f);
+        (pp) => {
+            if(!pp) return
+            if(typeof pp!=="string") return;
+            this._pageNumber=parseInt(pp)-1
         }
     )
 
-    constructor() {
-        makeObservable<ProductsStore, PrivateFields>(this, {
-            //observable делает deep-compare старого _list'а с новым а это долго Мы ведь меняем весь list нам не надо deep-compare
-            // _list:observable,
-            _list: observable.ref,
-            _loading: observable,
-            list: computed,  //computed делает мемоизацию автоматом
-            //Тоесть get list() вызывается лишь когда _list меняется
-            loading: computed,
-            //action это те где мы меняем состояние observable полей
-            getProductsList: action
-        })
-    }
+    private readonly _recalculateTotalPagesReaction = reaction(
+        () =>  this.searchFilteredList,
+        (list) => {
+            if(!list){
+                this._totalPages=0
+                return
+            }
+            this._totalPages=Math.ceil(list.length/elementsPerPage)
+        }
+    )
 
-    async getProductsList(params: GetProductsListParams): Promise<void> {
-        this._loading = Loading.loading
-        this._list = getInitialCollectionModel()
-        const response = await this._apiStore.getProductsResponse()
-        //Нужно чтобы результат #1 не был [] а был именно равен response.data
-        //из-за await оборачивать в runInAction
-        //Если не обернуть то будет
-        //ререндер#2 при кот-м this._loading = Loading.success,this._list=[]
-        //ререндер#3 при кот-м this._loading = Loading.success,this._list=response.data
-        //А если обернуть то ререндера #2 не будет
+
+
+    async getProductsList(): Promise<void> {
+        this._state = State.loading
+        this._list = []
+        const response = await this.productService.getProductsResponse()
+
         runInAction(() => {
             if (response.status === 200) {
-                this._loading = Loading.success
-                //#1
+                this._state = State.success
                 try {
-                    this._list = normalizeCollection(response.data, (li) => li.id, normalizeProduct)
+                    this._list = response.data.map(normalizeProduct)
                 } catch (e) {
                     log(e)
-                    this._loading = Loading.error
-                    this._list = getInitialCollectionModel()
+                    this._state = State.error
+                    this._list = []
                 }
             } else {
-                this._loading = Loading.error
+                this._state = State.error
             }
         })
     }
@@ -96,7 +151,8 @@ export default class ProductsStore implements IProductsStore, ILocalStore {
     destroy(): void {
         this._qReaction()
         this._pReaction()
-        this._fReaction()
+        this._recalculateTotalPagesReaction()
+        this._scReaction()
     }
 
 }

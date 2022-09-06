@@ -31,10 +31,11 @@ const App=()=>{
 
 root.render(
     <BrowserRouter>
-
-    <React.StrictMode>
+    {/*Внимание StrictMode вызывает ДВОЙНОЙ mount всего чо внутри*/}
+    {/*А еще почему-то с ним реакция _recalculateTotalPagesReaction не срабатывает*/}
+    {/*<React.StrictMode>*/}
       <App/>
-  </React.StrictMode>
+  {/*</React.StrictMode>*/}
     </BrowserRouter>
 
 );

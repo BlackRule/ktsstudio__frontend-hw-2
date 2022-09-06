@@ -1,8 +1,11 @@
 import styles from './index.module.scss'
 import {MultiDropdown, Option} from "@components/MultiDropdown/MultiDropdown";
 import {ComponentProps, useEffect, useState} from "react";
-import PostService from "@api/ProductService";
 import {Button} from "@components/Button/Button";
+import {State} from "@utils/state";
+import {useLocalStore} from "@utils/useLocalStore";
+import CategoriesStore from "@store/CategoriesStore";
+import {observer} from "mobx-react-lite";
 
 type FilterProps= Omit<ComponentProps<typeof Button>,'onChange'>&{
     onChange:(value: Option[]) => void,
@@ -10,17 +13,10 @@ type FilterProps= Omit<ComponentProps<typeof Button>,'onChange'>&{
 }
 
 const Filter = ({selectedOptions,onChange,...props}:FilterProps) => {
-    /*TODO useEffect(() => {
-        //TODO should fetch only when is opened first time, not when mounted...
-        //TODO handle Error
-        PostService.getCategoriesResponse().then((response) => {
-                return setOptions(response.data ? response.data.map((v): Option => ({key: v, value: v})) : [])
-            }
-        )
-
-    },[])*/
-    const [options, setOptions] = useState<Option[]>()
-
+    const categoriesStore = useLocalStore(() => new CategoriesStore());
+    useEffect(() => {
+        categoriesStore.getCategoriesList()
+    }, [categoriesStore]);
     return (
         <MultiDropdown {...props} generateValueElement={() => {
             return (props) => <div {...props}>
@@ -28,8 +24,8 @@ const Filter = ({selectedOptions,onChange,...props}:FilterProps) => {
                 <span>Filter</span></div>
         }} onChange={(v) => {
             onChange(v)
-        }} options={options?options:[]} loading={!options} value={selectedOptions}
+        }} options={categoriesStore.list} loading={categoriesStore.loading===State.loading} value={selectedOptions}
         optionsProps={{className:styles.options}} valueProps={{className:styles.value}}/>
     )
 }
-export default Filter
+export default observer(Filter)

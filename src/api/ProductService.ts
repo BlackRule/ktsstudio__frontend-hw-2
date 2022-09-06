@@ -14,7 +14,7 @@ export default class ProductService{
            })
        return  axios.get<ProductApi[]>(`${this._baseUrl}/products`)
     }
-    async getProductResponse(id: string){
+    async getProductResponse(id: ProductApi["id"]){
         return  axios.get<ProductApi>(`${this._baseUrl}/products/${id}`)
     }
     async getCategoriesResponse(){
