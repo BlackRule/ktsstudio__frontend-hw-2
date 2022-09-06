@@ -14,9 +14,7 @@ type FilterProps= Omit<ComponentProps<typeof Button>,'onChange'>&{
 
 const Filter = ({selectedOptions,onChange,...props}:FilterProps) => {
     const categoriesStore = useLocalStore(() => new CategoriesStore());
-    useEffect(() => {
-        categoriesStore.getCategoriesList()
-    }, [categoriesStore]);
+    const [clickedAtLeastOnce,setClickedAtLeastOnce]=useState(false)
     return (
         <MultiDropdown {...props} generateValueElement={() => {
             return (props) => <div {...props}>
@@ -25,7 +23,13 @@ const Filter = ({selectedOptions,onChange,...props}:FilterProps) => {
         }} onChange={(v) => {
             onChange(v)
         }} options={categoriesStore.list} loading={categoriesStore.loading===State.loading} value={selectedOptions}
-        optionsProps={{className:styles.options}} valueProps={{className:styles.value}}/>
+        optionsProps={{className:styles.options}} valueProps={{className:styles.value,onClick:()=>{
+            if(!clickedAtLeastOnce){ //fixme
+                categoriesStore.getCategoriesList()
+                setClickedAtLeastOnce(true)
+            }
+            }}}
+        />
     )
 }
 export default observer(Filter)
