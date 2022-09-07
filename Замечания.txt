@@ -1,3 +1,0 @@
-Если вставить в новой вкладке
-http://localhost:3000/?p=2&sc%5B0%5D=electronics&sc%5B1%5D=jewelery&q=
-То параметры не применены!!!
