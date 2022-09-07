@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { WithLoader } from '../components/WithLoader/WithLoader';
+import { WithLoader } from '@components/WithLoader/WithLoader';
 import { Locators } from './constants';
 
-jest.mock('../components/Loader/Loader.tsx', () => require('./MockLoader'));
+jest.mock('@components/Loader/Loader.tsx', () => require('./MockLoader'));
 
 describe('Тестирование компонента WithLoader', () => {
   test('При передаче loading=true отображается Loader', () => {

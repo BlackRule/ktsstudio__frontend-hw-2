@@ -1,25 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {MultiDropdown, Option} from "./components/MultiDropdown/MultiDropdown";
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
+import styles from './index.module.scss'
+import Products from "@pages/Products";
+import Product from "@pages/Product";
+import {Header} from "@components/Header/Header";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 const App=()=>{
-    const [options, setOptions]=useState([{ key: 'msk', value: 'Москва' },
-        { key: 'spb', value: 'Санкт-Петербург' },
-        { key: 'ekb', value: 'Екатеринбург' },])
-    const [value,setValue] =useState<Option[]>([])
     return (
-        <>
-            <MultiDropdown options={options} value={[]} pluralizeOptions={(elements: Option[]) =>
-            elements.map((el: Option) => el.key).join()} onChange={console.dir}/>
-            <button onClick={()=>{setOptions([{ key: 'msk', value: 'Москва' },
-                { key: 'ekb', value: 'Екатеринбург' }])}}>change options</button>
-            <button onClick={()=>{setValue([{ key: 'ekb', value: 'Екатеринбург' }])}}>change value</button>
-        </>
+        <BrowserRouter>
+        <div className={styles.App}>
+            <Header/>
+            <Routes>
+                <Route path="/" element={<Products />} />
+                <Route path="/product">
+                    <Route path=':id' element={<Product/>}/>
+                    <Route path="" element={<Navigate to="/404" replace />} />
+                </Route>
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
 
+        </div>
+        </BrowserRouter>
     )
 }
 

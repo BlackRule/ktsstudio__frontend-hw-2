@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Locators } from './constants';
-import { Loader } from '../components/Loader/Loader';
+import { Loader } from '@components/Loader/Loader';
 import { LoaderSize } from './MockLoader';
 
 describe('Тестирование компонента Loader', () => {

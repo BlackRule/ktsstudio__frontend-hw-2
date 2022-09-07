@@ -1,0 +1,38 @@
+@use '@style/style';
+
+@mixin animate($animation,$duration,$method,$times){
+  animation: $animation $duration $method $times;
+}
+//TODO исп-ть такой паттерн
+@mixin keyframes($name){
+  @keyframes #{$name}{
+    @content;
+  }
+}
+
+.Loader{
+  border: #{style.$color-primary} 6px solid;
+  border-bottom-color: white;
+  border-radius: 50%;
+  @include keyframes(rotate){
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  @include animate(rotate, 1s, linear, infinite);
+}
+.Loader-l{
+  width: 60px;
+  height: 60px;
+}
+.Loader-m{
+  width: 40px;
+  height: 40px;
+}
+.Loader-s{
+  width: 20px;
+  height: 20px;
+}

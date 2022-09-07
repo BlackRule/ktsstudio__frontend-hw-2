@@ -1,0 +1,19 @@
+@use '@style/style';
+
+.value{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 27px 52px;
+  @include style.drop-shadow;
+}
+.icon{
+  width: 30px;
+  height: 30px;
+  background-image: url("./img/filter.svg");
+}
+.options{
+  //z-index: 2;
+  background-color: white;
+  cursor: default;
+}

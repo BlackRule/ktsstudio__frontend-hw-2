@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Locators } from './constants';
 import userEvent from '@testing-library/user-event';
-import { Input, InputProps } from '../components/Input/Input';
+import { Input, InputProps } from '@components/Input/Input';
 
 const WrappedInput: React.FC<Pick<InputProps, 'onChange'>> = ({ onChange }) => {
   const [value, setValue] = React.useState('');

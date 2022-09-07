@@ -1,0 +1,19 @@
+$fws: (200, 300, 400, 500, 700, 800);
+$ffs: ("woff2":'woff2', 'woff':'woff2', 'ttf':'truetype');
+
+@each $fw in $fws {
+  @font-face {
+    font-family: "Eudoxus-Sans";
+    $p: './Eudoxus-Sans/font/';
+    $src: null;
+    $i: 1;
+    @each $fe, $ff in $ffs {
+      $src: $src url("#{$p}variable.#{$fe}") format("#{$ff}-variations"),
+      url("#{$p}#{$fw}.#{$fe}") format("#{$ff}")#{if($i !=3, ',', '')};
+      $i: $i + 1;
+    }
+    src: $src;
+    font-weight: #{$fw};
+  }
+}
+

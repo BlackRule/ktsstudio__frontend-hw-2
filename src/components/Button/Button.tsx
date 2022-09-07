@@ -1,8 +1,9 @@
-import {Loader} from "../Loader/Loader";
+import {Loader, LoaderSize} from "@components/Loader/Loader";
+import styles from './Button.module.scss'
 
 const classNames = require('classnames');
 
-export enum ButtonColor {
+export enum ButtonSkin {
     primary = 'primary',
     secondary = 'secondary'
 }
@@ -13,9 +14,14 @@ export type ButtonProps = React.PropsWithChildren<{
      * Также кнопка должна переходить в состояние disabled
      */
     loading?: boolean;
-    color?: ButtonColor;
+    skin?: ButtonSkin;
 }> & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = ({children, loading=false, color=ButtonColor.primary, ...props}:ButtonProps) => {
-    return (<button {...props} className={classNames('button',props.disabled||loading?'button_disabled':null,`button_color-${color}`,props?.className)} disabled={props.disabled||loading}><Loader loading={loading}></Loader>{children}</button>);
+//TODO исправить цвет и margin-right loader'а вместо gap
+export const Button = ({children, loading=false, skin=ButtonSkin.primary, ...props}:ButtonProps) => {
+    props = {...props,disabled:loading||props.disabled}
+    return (<button {...props}
+     className={classNames(styles.Button,styles[`button-skin_${skin}`],props?.className)}
+    disabled={props.disabled}
+    ><Loader loading={loading} size={LoaderSize.s}/>{children}</button>);
 };

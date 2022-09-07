@@ -1,0 +1,22 @@
+@use '@style/style';
+
+.Input{
+  border: 0;
+  padding: 26px 30px;
+  @include style.drop-shadow;
+  @media(max-width: 1023px){
+    padding: 14px;
+  }
+  @media(max-width: 375px){
+    //fixme не могу понять почему это требуется. Без этого расширяется неадекватно
+    max-width: 181px;
+  }
+  @media(max-width: 320px){
+    //fixme не могу понять почему это требуется. Без этого расширяется неадекватно
+    max-width: 126px;
+  }
+}
+
+.Input:focus{
+  outline: 1px solid #{style.$color-primary};
+}
