@@ -23,5 +23,5 @@ export const Button = ({children, loading=false, skin=ButtonSkin.primary, ...pro
     return (<button {...props}
      className={classNames(styles.Button,styles[`button-skin_${skin}`],props?.className)}
     disabled={props.disabled}
-    ><Loader loading={loading} size={LoaderSize.s}/>{children}</button>);
+    ><Loader loading={loading} size={LoaderSize.s} className={styles.loader}/>{children}</button>);
 };

@@ -8,6 +8,7 @@
     &:active,&:focus{
         border: 1px solid #{style.$color-primary};
     }
+    padding: 0;
 }
 .value{
     padding: 27px 62px;

@@ -6,144 +6,115 @@ import {normalizeProduct, ProductModel} from "@models/products";
 import {log} from "@utils/console";
 import rootStore from "@store/RootStore";
 import ProductService from "@api/ProductService";
+import {useNavigate} from "react-router-dom";
 
 
 const BASE_URL = 'https://fakestoreapi.com';
 
-type PrivateFields = '_list' | '_state'|'_query'|'_pageNumber'|'_selectedCategories'|'_totalPages'
 
-const elementsPerPage=6
+const elementsPerPage = 6
 
 export default class ProductsStore implements IProductsStore, ILocalStore {
-    set selectedCategories(value: string[]) {
-        this._selectedCategories = value;
-    }
-    get totalPages(): number {
-        return this._totalPages;
-    }
-    get selectedCategories() {
-        return this._selectedCategories;
-    }
-    get pageNumber() {
-        return this._pageNumber;
-    }
-    get query() {
-        return this._query;
-    }
-    get state(){
-        return this._state
-    }
 
-    get list(){
-        return this._list
-    }
+    //fullList->categoriesFilteredList->searchFilteredList->pagedList
 
     private readonly productService = new ProductService(BASE_URL);
-    private _state: State = State.initial
-    private _list: ProductModel[]=[]
-    private _query=""
-    private _pageNumber=0
-    private _totalPages=0
-    private _selectedCategories:string[]=[]
-
+    state: State = State.initial
+    list: ProductModel[] = []
+    query = ""
+    pageNumber = 0
+    totalPages = 0
+    selectedCategories: string[] = []
 
     constructor() {
-        makeObservable<ProductsStore, PrivateFields>(this, {
-            _state: observable,
-            state: computed,
-            _list: observable.ref,
-            list: computed,
-            _query:observable,
-            query:computed,
-            _pageNumber:observable,
-            pageNumber:computed,
-            _totalPages:observable,
-            totalPages:computed,
-            _selectedCategories:observable,
-            selectedCategories:computed,
+        makeObservable<ProductsStore>(this, {
+            state: observable,
+            list: observable.ref,
+            query: observable,
+            pageNumber: observable,
+            totalPages: observable,
+            selectedCategories: observable,
             getProductsList: action,
-            searchFilteredList:computed,
-            categoryFilteredList:computed,
-            pagedList:computed,
+            searchFilteredList: computed,
+            categoryFilteredList: computed,
+            pagedList: computed,
         })
 
     }
 
-
-
     get categoryFilteredList() {
-        if(this._selectedCategories.length===0) return this._list
-        return this._list.filter((v)=>this._selectedCategories.includes(v.category))
+        if (this.selectedCategories.length === 0) return this.list
+        return this.list.filter((v) => this.selectedCategories.includes(v.category))
     }
-    get searchFilteredList(){
+
+    get searchFilteredList() {
         const list = this.categoryFilteredList
-        if(this._query==="") return list
+        if (this.query === "") return list
+        function includesLC(what:string, inclWhat:string){
+            return what.toLowerCase().includes(inclWhat.toLowerCase())
+        }
         return list.filter(
-            (v)=>v.title.includes(this._query)||v.description.includes(this._query)||
-                v.category.includes(this._query)
+            (v) => [v.title,v.description,v.category].some((v)=>includesLC(v,this.query) )
         )
     }
 
+    private readonly _recalculateTotalPagesReaction = reaction(
+        () => this.searchFilteredList,
+        (list) => {
+            if (!list) {
+                this.totalPages = 0
+                return
+            }
+            this.totalPages = Math.ceil(list.length / elementsPerPage)
+            if (this.totalPages > 0 && this.pageNumber >= this.totalPages) this.pageNumber = this.totalPages - 1
+        }
+    )
+
     get pagedList() {
         const list = this.searchFilteredList;
-        const pn = this._pageNumber;
-        if(!list) return list
-        return list.slice(pn*elementsPerPage,pn*elementsPerPage+elementsPerPage)
+        const pn = this.pageNumber;
+        if (!list) return list
+        return list.slice(pn * elementsPerPage, pn * elementsPerPage + elementsPerPage)
     }
 
     private readonly _scReaction = reaction(
         () => rootStore.query.getParam("sc"),
         (sc) => {
-            // @ts-ignore TODO
-            this._selectedCategories=sc||[]
+            this.selectedCategories = (sc as string[]) || [] //TODO as string
         }
     )
 
     private readonly _qReaction = reaction(
         () => rootStore.query.getParam("q"),
         (q) => {
-            this._query=q as string || "" //fixme as string
+            this.query = q as string || "" //fixme as string
         }
     )
     private readonly _pReaction = reaction(
         () => rootStore.query.getParam("p"),
         (pp) => {
-            if(!pp) return
-            if(typeof pp!=="string") return;
-            this._pageNumber=parseInt(pp)-1
+            const p = parseInt(pp as string) - 1
+            this.pageNumber = p >= 0 ? p : 0 //fixme as string
         }
     )
-
-    private readonly _recalculateTotalPagesReaction = reaction(
-        () =>  this.searchFilteredList,
-        (list) => {
-            if(!list){
-                this._totalPages=0
-                return
-            }
-            this._totalPages=Math.ceil(list.length/elementsPerPage)
-        }
-    )
-
-
 
     async getProductsList(): Promise<void> {
-        this._state = State.loading
-        this._list = []
+        this.state = State.loading
+        this.list = []
         const response = await this.productService.getProductsResponse()
 
         runInAction(() => {
             if (response.status === 200) {
-                this._state = State.success
+                this.state = State.success
                 try {
-                    this._list = response.data.map(normalizeProduct)
+                    this.list = response.data.map(normalizeProduct)
                 } catch (e) {
                     log(e)
-                    this._state = State.error
-                    this._list = []
+                    this.state = State.error
+                    this.list = []
                 }
             } else {
-                this._state = State.error
+                this.state = State.error
             }
         })
     }

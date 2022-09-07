@@ -13,5 +13,5 @@ export type InputProps = Omit<
 };
 export const Input = ({value,onChange,...props}:InputProps) => {
     return (<input {...props} value={value} onChange={(e)=>onChange(e.target.value)}
-                   className={classNames(styles.Input)} type="text"/>);
+                   className={classNames(props.className,styles.Input)} type="text"/>);
 };
