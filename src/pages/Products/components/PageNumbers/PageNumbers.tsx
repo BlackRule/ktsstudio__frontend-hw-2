@@ -1,8 +1,6 @@
 import styles from './PageNumbers.module.scss'
 import classNames from "classnames";
 import { Link } from 'react-router-dom';
-import rootStore from "@store/RootStore";
-import {observer} from "mobx-react-lite";
 import {getNewURL} from "@utils/getNewUrl";
 
 type PageNumbersProps= {

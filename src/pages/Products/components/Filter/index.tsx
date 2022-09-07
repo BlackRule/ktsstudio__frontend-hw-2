@@ -1,6 +1,6 @@
 import styles from './index.module.scss'
 import {MultiDropdown, Option} from "@components/MultiDropdown/MultiDropdown";
-import {ComponentProps, useEffect, useState} from "react";
+import {ComponentProps, useState} from "react";
 import {Button} from "@components/Button/Button";
 import {State} from "@utils/state";
 import {useLocalStore} from "@utils/useLocalStore";

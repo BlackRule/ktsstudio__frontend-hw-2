@@ -1,5 +1,3 @@
-import {ProductApi, ProductModel} from "@models/products";
-
 export type CollectionModel<K extends string|number,T>={
     //order должно иметь имя keys
     order:K[],
@@ -11,10 +9,10 @@ export const getInitialCollectionModel=():CollectionModel<any, any>=>({
 })
 
 export const normalizeCollection=<K extends string|number,T>(elements:T[],
-    getKeyForElement:(element:T)=>K,normalizeElement:( from: ProductApi)=> ProductModel):CollectionModel<K, T>=>{
+    getKeyForElement:(element:T)=>K,normalizeElement:<F>( from: F)=> T):CollectionModel<K, T>=>{
     const list:T[]=[]
     for (const item of elements) {
-        list.push(item)
+        list.push(normalizeElement(item))
     }
     const collection=getInitialCollectionModel()
     list.forEach((el)=>{

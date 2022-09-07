@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {ComponentStory} from '@storybook/react';
 
 import {Input} from './Input';
 

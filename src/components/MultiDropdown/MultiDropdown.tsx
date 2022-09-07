@@ -46,7 +46,7 @@ export const MultiDropdown = ({
             {options.map((option) =>
                 <div key={option.key}
                      className={classNames(styles.option, {[styles.selected]: includes(value, option)})}
-                     onClick={(e) => {
+                     onClick={() => {
                          if (!includes(value, option)) {
                              onChange([...value, option])
                          } else {

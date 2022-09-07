@@ -1,5 +1,4 @@
 import {RatingApi, RatingModel, normalizeRating} from "./rating";
-import {log} from "@utils/console";
 
 export type ProductApi = {
     id:number,

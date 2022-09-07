@@ -1,4 +1,4 @@
-import {GetCategoriesListParams, ICategoriesStore} from "./types";
+import {ICategoriesStore} from "./types";
 import {ILocalStore} from "@utils/useLocalStore";
 import {State} from "@utils/state";
 import {action, computed, makeObservable, observable, runInAction} from "mobx";

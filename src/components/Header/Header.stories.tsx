@@ -12,10 +12,10 @@ export default {
 } as ComponentMeta<typeof Header>;
 
 
-export const Default: ComponentStory<typeof Header> = (args) =>
+export const Default: ComponentStory<typeof Header> = () =>
     <div style={{border:"6px white solid"}}>
         <MemoryRouter>
-            <Header {...args}></Header>
+            <Header/>
         </MemoryRouter>
     </div>;
 Default.args = {

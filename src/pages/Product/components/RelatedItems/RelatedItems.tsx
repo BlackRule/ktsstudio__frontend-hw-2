@@ -1,6 +1,6 @@
 import {ProductModel} from "@models/products";
 import styles from './RelatedItems.module.scss'
-import {HTMLAttributes, useEffect, useState} from "react";
+import {HTMLAttributes, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {Card} from "@components/Card/Card";
 import {useLocalStore} from "@utils/useLocalStore";

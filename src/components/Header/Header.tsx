@@ -3,10 +3,7 @@ import styles from './Header.module.scss'
 import {Link} from "react-router-dom";
 import PagePadding from "@components/PagePadding/PagePadding";
 
-export type HeaderProps = React.PropsWithChildren<{
-
-}>;
-export const Header = ({}:HeaderProps) => {
+export const Header = () => {
     return (<header className={styles.Header}>
         <PagePadding className={styles.Header__inner}>
             <input type="checkbox" id={styles['menu__is-open']}/>

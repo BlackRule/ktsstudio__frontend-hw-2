@@ -1,4 +1,4 @@
-import {GetProductsListParams, IProductsStore} from "./types";
+import {IProductsStore} from "./types";
 import {ILocalStore} from "@utils/useLocalStore";
 import {State} from "@utils/state";
 import {action, computed, makeObservable, observable, reaction, runInAction} from "mobx";
@@ -6,7 +6,6 @@ import {normalizeProduct, ProductModel} from "@models/products";
 import {log} from "@utils/console";
 import rootStore from "@store/RootStore";
 import ProductService from "@api/ProductService";
-import {useNavigate} from "react-router-dom";
 
 
 const BASE_URL = 'https://fakestoreapi.com';

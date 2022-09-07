@@ -8,8 +8,8 @@ export enum Locators {
     CARD_SUBTITLE = 'card-subtitle',
     INPUT = 'input',
     CHECKBOX = 'checkbox'
-};
+}
 
-export const BUTTON_TEXT = 'BUTTON_TEST_TEXT';
-export const CARD_TITLE = 'CARD_TITLE_TEXT';
-export const CARD_SUBTITLE = 'CARD_SUBTITLE_TEXT';
+export const BUTTON_TEXT = 'BUTTON_TEST_TEXT'
+export const CARD_TITLE = 'CARD_TITLE_TEXT'
+export const CARD_SUBTITLE = 'CARD_SUBTITLE_TEXT'
