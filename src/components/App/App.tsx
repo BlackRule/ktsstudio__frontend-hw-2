@@ -1,9 +1,9 @@
-import { useQueryParamsStoreInit } from '@store/RootStore/hooks/useQueryParamsStoreInit';
+import { useQueryParamsStoreInit } from 'store/RootStore/hooks/useQueryParamsStoreInit';
 import styles from './App.module.scss';
-import { Header } from '@components/Header/Header';
+import { Header } from 'components/Header/Header';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Products from '@pages/Products';
-import Product from '@pages/Product';
+import Products from 'pages/Products';
+import Product from 'pages/Product';
 import React from 'react';
 
 const App = () => {

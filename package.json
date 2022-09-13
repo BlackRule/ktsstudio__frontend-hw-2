@@ -19,7 +19,8 @@
   "scripts": {
     "start": "set NODE_ENV=development && npx webpack-dev-server --hot --mode=development",
     "build": "set NODE_ENV=production && npx webpack-dev-server --hot --mode=production",
-    "ts-check": "tsc --skipLibCheck --noEmit --project tsconfig.json"
+    "ts-check": "tsc --skipLibCheck --noEmit --project tsconfig.json",
+    "eslint": "eslint src --ext .js,.jsx,.ts,.tsx"
   },
   "eslintConfig": {
     "extends": [
@@ -67,6 +68,15 @@
     "style-loader": "^3.3.1",
     "typescript": "^4.8.3",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.0"
+    "webpack-dev-server": "^4.11.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.2.5",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "prettier": "^2.7.1"
   }
 }
