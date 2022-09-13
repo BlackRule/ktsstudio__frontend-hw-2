@@ -1,5 +1,5 @@
-export type GetCategoriesListParams = {  }
+export type GetCategoriesListParams = {};
 
 export interface ICategoriesStore {
-    getCategoriesList(params: GetCategoriesListParams): Promise<void>
+  getCategoriesList(params: GetCategoriesListParams): Promise<void>;
 }

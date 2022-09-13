@@ -1,45 +1,45 @@
-import { useEffect, useState } from "react";
-function debounce(f:(...args:any[])=>void, ms:number) {
+import { useEffect, useState } from 'react';
+function debounce(f: (...args: any[]) => void, ms: number) {
+  let isCooldown = false;
 
-    let isCooldown = false;
+  return function (...args: any[]) {
+    if (isCooldown) {
+      return;
+    }
 
-    return function(...args:any[]) {
-        if (isCooldown) return;
+    f(args);
 
-        f(args)
+    isCooldown = true;
 
-        isCooldown = true;
-
-        setTimeout(() => isCooldown = false, ms);
-    };
-
+    setTimeout(() => (isCooldown = false), ms);
+  };
 }
 
 export interface Size {
-    width: number; //TODO  | undefined google for it with SSR
-    height: number;
+  width: number; //TODO  | undefined google for it with SSR
+  height: number;
 }
 
-const getWindowDimensions = ():Size => {
-    const { innerWidth: width, innerHeight: height } = window;
-    return { width, height };
+const getWindowDimensions = (): Size => {
+  const { innerWidth: width, innerHeight: height } = window;
+  return { width, height };
 };
 
-const useWindowSize=(delay = 100) =>{
-    const [windowDimensions, setWindowDimensions] = useState(
-        getWindowDimensions()
-    );
+const useWindowSize = (delay = 100) => {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
 
-    useEffect(() => {
-        function handleResize() {
-            setWindowDimensions(getWindowDimensions());
-        }
-        const debouncedHandleResize = debounce(handleResize, delay);
-        window.addEventListener("resize", debouncedHandleResize);
-        return () => window.removeEventListener("resize", debouncedHandleResize);
-    }, [delay]);
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+    const debouncedHandleResize = debounce(handleResize, delay);
+    window.addEventListener('resize', debouncedHandleResize);
+    return () => window.removeEventListener('resize', debouncedHandleResize);
+  }, [delay]);
 
-    return windowDimensions;
-}
+  return windowDimensions;
+};
 
-export default useWindowSize
+export default useWindowSize;

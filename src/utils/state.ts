@@ -1,6 +1,6 @@
-export enum State{
-    initial,
-    loading,
-    error,
-    success
+export enum State {
+  initial,
+  loading,
+  error,
+  success,
 }
