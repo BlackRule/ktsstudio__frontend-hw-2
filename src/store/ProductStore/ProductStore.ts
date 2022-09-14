@@ -1,6 +1,6 @@
 import { GetProductParams, IProductStore } from './types'
-import { ILocalStore } from 'utils/useLocalStore'
-import { State } from 'utils/state'
+import { ILocalStore } from '@utils/useLocalStore'
+import { State } from '@utils/state'
 import {
   action,
   computed,
@@ -8,9 +8,9 @@ import {
   observable,
   runInAction,
 } from 'mobx'
-import { normalizeProduct, ProductModel } from 'models/products'
-import { log } from 'utils/console'
-import ProductService from 'api/ProductService'
+import { normalizeProduct, ProductModel } from '@models/products'
+import { log } from '@utils/console'
+import ProductService from '@api/ProductService'
 
 const BASE_URL = 'https://fakestoreapi.com'
 

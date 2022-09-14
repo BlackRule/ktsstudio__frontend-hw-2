@@ -1,4 +1,4 @@
-@use 'style/style.scss';
+@use '@style/style.scss';
 
 @mixin animate($animation,$duration,$method,$times){
   animation: $animation $duration $method $times;

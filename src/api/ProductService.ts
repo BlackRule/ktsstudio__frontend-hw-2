@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ProductApi } from 'models/products'
+import { ProductApi } from '@models/products'
 
 export default class ProductService {
   private readonly _baseUrl: string

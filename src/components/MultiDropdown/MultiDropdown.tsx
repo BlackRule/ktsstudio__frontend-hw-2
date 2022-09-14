@@ -7,7 +7,7 @@ import {
 } from 'react'
 import classNames from 'classnames'
 import styles from './MultiDropdown.module.scss'
-import { Button, ButtonSkin } from 'components/Button/Button'
+import { Button, ButtonSkin } from '@components/Button/Button'
 
 export type Option = {
   key: string;

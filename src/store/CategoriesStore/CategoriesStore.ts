@@ -1,6 +1,6 @@
 import { ICategoriesStore } from './types'
-import { ILocalStore } from 'utils/useLocalStore'
-import { State } from 'utils/state'
+import { ILocalStore } from '@utils/useLocalStore'
+import { State } from '@utils/state'
 import {
   action,
   computed,
@@ -8,9 +8,9 @@ import {
   observable,
   runInAction,
 } from 'mobx'
-import { log } from 'utils/console'
-import ProductService from 'api/ProductService'
-import { Option } from 'components/MultiDropdown/MultiDropdown'
+import { log } from '@utils/console'
+import ProductService from '@api/ProductService'
+import { Option } from '@components/MultiDropdown/MultiDropdown'
 
 const BASE_URL = 'https://fakestoreapi.com'
 

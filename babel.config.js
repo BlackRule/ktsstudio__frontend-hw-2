@@ -1,4 +1,12 @@
+const { toBabelAliases } = require("./tsconfig.paths.js")
 const plugins = [
+  [
+    'module-resolver',
+    {
+      alias: toBabelAliases(),
+      root: ['./src']
+    }
+  ],
   ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
   ['@babel/plugin-proposal-private-methods', { loose: true }],
   '@babel/plugin-proposal-optional-chaining',

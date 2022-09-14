@@ -1,6 +1,6 @@
 import { GetItemsParams, IRelatedItemsStore } from './types'
-import { ILocalStore } from 'utils/useLocalStore'
-import { State } from 'utils/state'
+import { ILocalStore } from '@utils/useLocalStore'
+import { State } from '@utils/state'
 import {
   action,
   computed,
@@ -8,16 +8,16 @@ import {
   observable,
   runInAction,
 } from 'mobx'
-import { normalizeProduct, ProductModel } from 'models/products'
-import { log } from 'utils/console'
-import ProductService from 'api/ProductService'
+import { normalizeProduct, ProductModel } from '@models/products'
+import { log } from '@utils/console'
+import ProductService from '@api/ProductService'
 
 const BASE_URL = 'https://fakestoreapi.com'
 
 type PrivateFields = '_list' | '_state';
 
 export default class RelatedItemsStore
-  implements IRelatedItemsStore, ILocalStore
+implements IRelatedItemsStore, ILocalStore
 {
   get state() {
     return this._state

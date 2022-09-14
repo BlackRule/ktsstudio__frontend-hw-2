@@ -1,7 +1,7 @@
 import logo from './img/logo.svg'
 import styles from './Header.module.scss'
 import { Link } from 'react-router-dom'
-import PagePadding from 'components/PagePadding/PagePadding'
+import PagePadding from '@components/PagePadding/PagePadding'
 
 export const Header = () => {
   return (

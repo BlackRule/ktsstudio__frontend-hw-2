@@ -1,7 +1,7 @@
 import styles from './PageNumbers.module.scss'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
-import { getNewURL } from 'utils/getNewUrl'
+import { getNewURL } from '@utils/getNewUrl'
 
 type PageNumbersProps = {
   curParams: qs.ParsedQs;

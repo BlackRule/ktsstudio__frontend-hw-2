@@ -1,10 +1,10 @@
 import styles from './index.module.scss'
-import { MultiDropdown, Option } from 'components/MultiDropdown/MultiDropdown'
+import { MultiDropdown, Option } from '@components/MultiDropdown/MultiDropdown'
 import { ComponentProps, useState } from 'react'
-import { Button } from 'components/Button/Button'
-import { State } from 'utils/state'
-import { useLocalStore } from 'utils/useLocalStore'
-import CategoriesStore from 'store/CategoriesStore'
+import { Button } from '@components/Button/Button'
+import { State } from '@utils/state'
+import { useLocalStore } from '@utils/useLocalStore'
+import CategoriesStore from '@store/CategoriesStore'
 import { observer } from 'mobx-react-lite'
 
 type FilterProps = Omit<ComponentProps<typeof Button>, 'onChange'> & {

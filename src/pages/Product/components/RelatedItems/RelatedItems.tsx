@@ -1,13 +1,13 @@
-import { ProductModel } from 'models/products'
+import { ProductModel } from '@models/products'
 import styles from './RelatedItems.module.scss'
 import { HTMLAttributes, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Card } from 'components/Card/Card'
-import { useLocalStore } from 'utils/useLocalStore'
-import RelatedItemsStore from 'store/RelatedItemsStore/RelatedItemsStore'
+import { Card } from '@components/Card/Card'
+import { useLocalStore } from '@utils/useLocalStore'
+import RelatedItemsStore from '@store/RelatedItemsStore/RelatedItemsStore'
 import { observer } from 'mobx-react-lite'
-import { Loader } from 'components/Loader/Loader'
-import { State } from 'utils/state'
+import { Loader } from '@components/Loader/Loader'
+import { State } from '@utils/state'
 
 type RelatedItemsProps = React.PropsWithChildren<{
   category: ProductModel['category'];

@@ -1,10 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const srcPath = path.resolve(__dirname, 'src')
+path.resolve(__dirname, 'src')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin')
-const resolveTsconfigPathsToAlias = require('./resolve-tsconfig-path-to-webpack-alias.js')
+const { toWebpackAliases } = require('./tsconfig.paths.js')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -94,7 +94,7 @@ module.exports = {
   },
   plugins,
   resolve: {
-    alias: resolveTsconfigPathsToAlias('./tsconfig.paths.json'),
+    alias: toWebpackAliases(),
     extensions: ['.jsx', '.js', '.tsx', '.ts', 'scss'],
   },
   target: !isProd ? 'web' : 'browserslist',
