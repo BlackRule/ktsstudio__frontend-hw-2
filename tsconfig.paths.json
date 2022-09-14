@@ -2,16 +2,16 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "components": ["components"],
-      "style": ["style"],
-      "pages": ["pages"],
-      "models": ["models"],
-      "media": ["media"],
-      "hooks": ["hooks"],
       "api": ["api"],
+      "components": ["components"],
       "config": ["config"],
-      "utils": ["utils"],
-      "store": ["store"]
+      "hooks": ["hooks"],
+      "media": ["media"],
+      "models": ["models"],
+      "pages": ["pages"],
+      "store": ["store"],
+      "style": ["style"],
+      "utils": ["utils"]
     }
   }
 }

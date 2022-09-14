@@ -1,38 +1,38 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { Card } from 'components/Card/Card';
-import styles from './index.module.scss';
-import SearchBar from './components/SearchBar';
-import Filter from './components/Filter';
-import PagePadding from 'components/PagePadding/PagePadding';
-import { Option } from 'components/MultiDropdown/MultiDropdown';
-import PageNumbers from './components/PageNumbers/PageNumbers';
-import { Loader } from 'components/Loader/Loader';
-import { observer } from 'mobx-react-lite';
-import { useLocalStore } from 'utils/useLocalStore';
-import ProductsStore from 'store/ProductsStore';
-import { State } from 'utils/state';
-import rootStore from 'store/RootStore';
-import { toJS } from 'mobx';
-import { getNewURL } from 'utils/getNewUrl';
+import { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Card } from 'components/Card/Card'
+import styles from './index.module.scss'
+import SearchBar from './components/SearchBar'
+import Filter from './components/Filter'
+import PagePadding from 'components/PagePadding/PagePadding'
+import { Option } from 'components/MultiDropdown/MultiDropdown'
+import PageNumbers from './components/PageNumbers/PageNumbers'
+import { Loader } from 'components/Loader/Loader'
+import { observer } from 'mobx-react-lite'
+import { useLocalStore } from 'utils/useLocalStore'
+import ProductsStore from 'store/ProductsStore'
+import { State } from 'utils/state'
+import rootStore from 'store/RootStore'
+import { toJS } from 'mobx'
+import { getNewURL } from 'utils/getNewUrl'
 
 const Products = () => {
-  const navigate = useNavigate();
-  const productsStore = useLocalStore(() => new ProductsStore());
+  const navigate = useNavigate()
+  const productsStore = useLocalStore(() => new ProductsStore())
   useEffect(() => {
-    productsStore.getProductsList();
-  }, [productsStore]);
-  const optionsToStrings = (v: Option): string => v.value;
-  const stringsToOptions = (v: string): Option => ({ key: v, value: v });
-  const params = toJS(rootStore.query.getParams());
-  const pagedList = toJS(productsStore.pagedList);
-  const selectedCategories = toJS(productsStore.selectedCategories);
+    productsStore.getProductsList()
+  }, [productsStore])
+  const optionsToStrings = (v: Option): string => v.value
+  const stringsToOptions = (v: string): Option => ({ key: v, value: v })
+  const params = toJS(rootStore.query.getParams())
+  const pagedList = toJS(productsStore.pagedList)
+  const selectedCategories = toJS(productsStore.selectedCategories)
   const searchFilteredListLength = toJS(
     productsStore.searchFilteredList
-  ).length;
-  const productsStoreState = productsStore.state;
-  const currentPage = productsStore.pageNumber;
-  const { totalPages } = productsStore;
+  ).length
+  const productsStoreState = productsStore.state
+  const currentPage = productsStore.pageNumber
+  const { totalPages } = productsStore
   return (
     <PagePadding>
       <div className={styles.Products}>
@@ -50,7 +50,7 @@ const Products = () => {
             className={styles.Filter}
             selectedOptions={selectedCategories.map(stringsToOptions)}
             onChange={(opts) => {
-              navigate(getNewURL('sc', opts.map(optionsToStrings), params));
+              navigate(getNewURL('sc', opts.map(optionsToStrings), params))
             }}
           />
         </div>
@@ -80,6 +80,6 @@ const Products = () => {
         />
       </div>
     </PagePadding>
-  );
-};
-export default observer(Products);
+  )
+}
+export default observer(Products)

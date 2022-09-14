@@ -1,17 +1,17 @@
-import styles from './Loader.module.scss';
+import styles from './Loader.module.scss'
 
-const classNames = require('classnames');
+const classNames = require('classnames')
 
 export enum LoaderSize {
-  s = 's',
-  m = 'm',
   l = 'l',
+  m = 'm',
+  s = 's'
 }
 
 type LoaderProps = {
+  className?: string;
   loading?: boolean;
   size?: LoaderSize;
-  className?: string;
 };
 
 export const Loader = ({
@@ -26,5 +26,5 @@ export const Loader = ({
         className={classNames(styles.Loader, styles[`Loader-${size}`])}
       ></div>
     </div>
-  ) : null;
-};
+  ) : null
+}

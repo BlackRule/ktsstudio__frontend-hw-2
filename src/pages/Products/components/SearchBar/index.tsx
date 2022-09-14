@@ -1,16 +1,16 @@
-import styles from './index.module.scss';
-import { Input } from 'components/Input/Input';
-import { Button } from 'components/Button/Button';
-import { HTMLAttributes, useState } from 'react';
-import useWindowSize from 'hooks/useWindowSize';
-import classNames from 'classnames';
+import styles from './index.module.scss'
+import { Input } from 'components/Input/Input'
+import { Button } from 'components/Button/Button'
+import { HTMLAttributes, useState } from 'react'
+import useWindowSize from 'hooks/useWindowSize'
+import classNames from 'classnames'
 
 const SearchBar = ({
   handleSearch,
   ...props
 }: HTMLAttributes<HTMLDivElement> & { handleSearch: (v: string) => void }) => {
-  const { width, height: _ } = useWindowSize();
-  const [value, setValue] = useState('');
+  const { width, height: _ } = useWindowSize()
+  const [value, setValue] = useState('')
   return (
     <div
       {...props}
@@ -24,7 +24,7 @@ const SearchBar = ({
         className={styles.input}
         onKeyDown={(e) => {
           if (e.code === 'Enter') {
-            handleSearch(value);
+            handleSearch(value)
           }
         }}
       />
@@ -32,6 +32,6 @@ const SearchBar = ({
         {width > 1023 ? 'Find Now' : 'Search'}
       </Button>
     </div>
-  );
-};
-export default SearchBar;
+  )
+}
+export default SearchBar

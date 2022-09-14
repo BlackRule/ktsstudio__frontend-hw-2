@@ -1,13 +1,13 @@
 export type RatingApi = {
-  rate: number;
   count: number;
+  rate: number;
 };
 export type RatingModel = {
-  rate: number;
   count: number;
+  rate: number;
 };
 
 export const normalizeRating = (from: RatingApi): RatingModel => ({
-  rate: from.rate,
   count: from.count,
-});
+  rate: from.rate,
+})

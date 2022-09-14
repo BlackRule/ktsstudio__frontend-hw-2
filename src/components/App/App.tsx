@@ -1,13 +1,13 @@
-import { useQueryParamsStoreInit } from 'store/RootStore/hooks/useQueryParamsStoreInit';
-import styles from './App.module.scss';
-import { Header } from 'components/Header/Header';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import Products from 'pages/Products';
-import Product from 'pages/Product';
-import React from 'react';
+import { useQueryParamsStoreInit } from 'store/RootStore/hooks/useQueryParamsStoreInit'
+import styles from './App.module.scss'
+import { Header } from 'components/Header/Header'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import Products from 'pages/Products'
+import Product from 'pages/Product'
+import React from 'react'
 
 const App = () => {
-  useQueryParamsStoreInit();
+  useQueryParamsStoreInit()
   return (
     <div className={styles.App}>
       <Header />
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

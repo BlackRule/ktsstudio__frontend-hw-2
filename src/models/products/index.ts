@@ -1,2 +1,2 @@
-export * from './rating';
-export * from './Product';
+export * from './rating'
+export * from './Product'

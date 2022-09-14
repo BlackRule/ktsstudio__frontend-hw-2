@@ -11,5 +11,5 @@ export const CheckBox = ({ onChange, ...props }: CheckBoxProps) => {
       {...props}
       onChange={(e) => onChange(e.target.checked)}
     />
-  );
-};
+  )
+}

@@ -1,14 +1,14 @@
-import { InputHTMLAttributes } from 'react';
-import styles from './Input.module.scss';
+import { InputHTMLAttributes } from 'react'
+import styles from './Input.module.scss'
 
-const classNames = require('classnames');
+const classNames = require('classnames')
 
 export type InputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'onChange'
 > & {
-  value: string;
   onChange: (value: string) => void;
+  value: string;
 };
 export const Input = ({ value, onChange, ...props }: InputProps) => {
   return (
@@ -19,5 +19,5 @@ export const Input = ({ value, onChange, ...props }: InputProps) => {
       className={classNames(props.className, styles.Input)}
       type="text"
     />
-  );
-};
+  )
+}

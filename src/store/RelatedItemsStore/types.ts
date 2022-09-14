@@ -1,4 +1,4 @@
-import { ProductModel } from 'models/products';
+import { ProductModel } from 'models/products'
 
 export type GetItemsParams = {
   category: ProductModel['category'];

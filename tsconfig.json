@@ -1,31 +1,23 @@
 {
-  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
-    "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "allowJs": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
     "isolatedModules": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "module": "esnext",
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "strict": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"],
+  "extends": "./tsconfig.paths.json",
+  "include": ["src/**/*"]
 }

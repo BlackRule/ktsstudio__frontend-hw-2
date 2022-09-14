@@ -1,14 +1,14 @@
-import styles from './PageNumbers.module.scss';
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
-import { getNewURL } from 'utils/getNewUrl';
+import styles from './PageNumbers.module.scss'
+import classNames from 'classnames'
+import { Link } from 'react-router-dom'
+import { getNewURL } from 'utils/getNewUrl'
 
 type PageNumbersProps = {
-  onChange?: (currentPage: number) => void;
-  totalPages: number;
-  currentPage: number;
-  paramName: string;
   curParams: qs.ParsedQs;
+  currentPage: number;
+  onChange?: (currentPage: number) => void;
+  paramName: string;
+  totalPages: number;
 };
 
 const PageNumbers = ({
@@ -33,6 +33,6 @@ const PageNumbers = ({
         </Link>
       ))}
     </div>
-  );
-};
-export default PageNumbers;
+  )
+}
+export default PageNumbers
