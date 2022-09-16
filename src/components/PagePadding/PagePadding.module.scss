@@ -1,7 +1,8 @@
 .PagePadding{
   max-width: 1440px;
   margin: auto;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  width: 100%;
   //remove it in prod. since it takes 2px of screen width
   //border: red 1px solid;
   padding: 0 100px;

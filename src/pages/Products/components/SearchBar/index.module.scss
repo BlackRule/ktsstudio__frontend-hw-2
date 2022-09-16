@@ -1,14 +1,19 @@
-@use './@style/style';
+@use '@style/style';
 .Search-bar{
   display: flex;
   align-items: center;
-  padding: 15px 28px;
+  padding: 0 28px;
   @include style.drop-shadow;
   @media(max-width: 1023px){
     font-size: 18px;
-    padding: 16px;
+    padding: 0 16px;
     padding-right: 8px;
   }
+}
+.input{
+  flex-grow:1;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .icon{
   width: 32px;

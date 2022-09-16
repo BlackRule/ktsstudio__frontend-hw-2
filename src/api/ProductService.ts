@@ -1,19 +1,30 @@
-import axios, {Axios, AxiosResponse} from "axios";
-import Product from "@models/Product";
+import axios from 'axios';
+import { ProductApi } from '@models/products';
 
-export default class PostService{
-    static async getProductsResponse(category?:Product["category"],limit=-1){
-       if(category)
-       return  axios.get<Product[]>(`https://fakestoreapi.com/products/category/${category}`,
-           {
-               ...(limit>0 && {params: {limit: limit}})
-           })
-       return  axios.get<Product[]>('https://fakestoreapi.com/products')
+export default class ProductService {
+  private readonly _baseUrl: string;
+
+  constructor(baseUrl: string) {
+    this._baseUrl = baseUrl;
+  }
+
+  async getProductsResponse(category?: ProductApi['category'], limit = -1) {
+    if (category) {
+      return axios.get<ProductApi[]>(
+        `${this._baseUrl}/products/category/${category}`,
+        {
+          ...(limit > 0 && { params: { limit: limit } }),
+        }
+      );
     }
-    static async getProductResponse(id: string){
-        return  axios.get<Product>(`https://fakestoreapi.com/products/${id}`)
-    }
-    static async getCategoriesResponse(){
-        return  axios.get<string[]>(`https://fakestoreapi.com/products/categories`)
-    }
+    return axios.get<ProductApi[]>(`${this._baseUrl}/products`);
+  }
+
+  async getProductResponse(id: ProductApi['id']) {
+    return axios.get<ProductApi>(`${this._baseUrl}/products/${id}`);
+  }
+
+  async getCategoriesResponse() {
+    return axios.get<string[]>(`${this._baseUrl}/products/categories`);
+  }
 }

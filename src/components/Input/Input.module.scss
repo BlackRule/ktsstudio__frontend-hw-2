@@ -8,11 +8,11 @@
     padding: 14px;
   }
   @media(max-width: 375px){
-    //fixme не могу понять почему это требуется. Без этого расширяется неадекватно
+    //fixme https://github.com/BlackRule/ktsstudio__frontend-hw-2/issues/2
     max-width: 181px;
   }
   @media(max-width: 320px){
-    //fixme не могу понять почему это требуется. Без этого расширяется неадекватно
+    //fixme https://github.com/BlackRule/ktsstudio__frontend-hw-2/issues/2
     max-width: 126px;
   }
 }

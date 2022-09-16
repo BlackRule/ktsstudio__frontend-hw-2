@@ -1,31 +1,39 @@
-import {useLocation, useNavigate, useParams} from "react-router-dom"
-import {useEffect, useState} from "react"
-import PostService from "@api/ProductService"
-import ProductModel from '@models/Product'
-import styles from './Product.module.scss'
-import Product from "./components/Product/Product"
-import PagePadding from "@components/PagePadding/PagePadding";
-import RelatedItems from "./components/RelatedItems/RelatedItems";
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import styles from './Product.module.scss';
+import Product from './components/Product/Product';
+import PagePadding from '@components/PagePadding/PagePadding';
+import RelatedItems from './components/RelatedItems/RelatedItems';
+import { useLocalStore } from '@utils/useLocalStore';
+import ProductStore from '@store/ProductStore';
+import { Loader } from '@components/Loader/Loader';
+import { observer } from 'mobx-react-lite';
 
 const ProductPage = () => {
-    const URLparams = useParams() as unknown as { id: string | undefined };
-    const [product, setProduct] = useState<ProductModel>()
-    const navigate = useNavigate()
-    const location = useLocation()
-    useEffect(() => {
-        console.log(URLparams.id)
-        if (typeof (URLparams.id) !== "string") navigate("/")
-        else
-            PostService.getProductResponse(URLparams.id).then((response)=>setProduct(response.data))
+  const URLparams = useParams() as unknown as { id: string | undefined };
+  const navigate = useNavigate();
+  const productStore = useLocalStore(() => new ProductStore());
+  const location = useLocation();
+  useEffect(() => {
+    if (typeof URLparams.id !== 'string') {
+      navigate('/');
+    } else {
+      productStore.getProduct({ id: Number(URLparams.id) });
+    }
+  }, [productStore, location]);
 
-    },[location])
-    return (
-        <PagePadding>
-            {product ?<>
-                <Product product={product}/>
-                <RelatedItems category={product.category}/>
-            </>: null}
-        </PagePadding>
-    )
+  const { product } = productStore;
+  return (
+    <PagePadding>
+      {product === null ? (
+        <Loader />
+      ) : (
+        <>
+          <Product product={product} />
+          <RelatedItems category={product.category} exceptId={product.id} />
+        </>
+      )}
+    </PagePadding>
+  );
 };
-export default ProductPage
+export default observer(ProductPage);

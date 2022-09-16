@@ -19,6 +19,11 @@
   }
 }
 
+.loader{
+  position: absolute;
+  left: 14px;
+}
+
 /*to prevent element from affecting children:*/
 @mixin opacity($bg-color,$color) {
   background-color: rgba($bg-color, 0.7);
@@ -35,7 +40,7 @@
   }
   &:hover>*{
     background-color: red;
-    //Fixme: Не работет почему-то Должно не opacit'ь цвет ребенка А opacit
+    //Fixme: https://github.com/BlackRule/ktsstudio__frontend-hw-2/issues/3
     color: black;
   }
 }
