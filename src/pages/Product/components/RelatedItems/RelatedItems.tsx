@@ -1,13 +1,13 @@
-import { ProductModel } from '@models/products';
-import styles from './RelatedItems.module.scss';
-import { HTMLAttributes, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Card } from '@components/Card/Card';
-import { useLocalStore } from '@utils/useLocalStore';
-import RelatedItemsStore from '@store/RelatedItemsStore/RelatedItemsStore';
-import { observer } from 'mobx-react-lite';
-import { Loader } from '@components/Loader/Loader';
-import { State } from '@utils/state';
+import { ProductModel } from '@models/products'
+import styles from './RelatedItems.module.scss'
+import { HTMLAttributes, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Card } from '@components/Card/Card'
+import { useLocalStore } from '@utils/useLocalStore'
+import RelatedItemsStore from '@store/RelatedItemsStore/RelatedItemsStore'
+import { observer } from 'mobx-react-lite'
+import { Loader } from '@components/Loader/Loader'
+import { State } from '@utils/state'
 
 type RelatedItemsProps = React.PropsWithChildren<{
   category: ProductModel['category'];
@@ -16,11 +16,11 @@ type RelatedItemsProps = React.PropsWithChildren<{
   HTMLAttributes<HTMLDivElement>;
 
 const RelatedItems = ({ category, exceptId }: RelatedItemsProps) => {
-  const relatedItemsStore = useLocalStore(() => new RelatedItemsStore());
+  const relatedItemsStore = useLocalStore(() => new RelatedItemsStore())
   useEffect(() => {
-    relatedItemsStore.getItems({ category: category, exceptId: exceptId });
-  }, [relatedItemsStore]);
-  const relatedItems = relatedItemsStore.list;
+    relatedItemsStore.getItems({ category: category, exceptId: exceptId })
+  }, [relatedItemsStore])
+  const relatedItems = relatedItemsStore.list
   return (
     <section className={styles.RelatedItems}>
       <div className={styles.txt}>Related Items</div>
@@ -36,7 +36,7 @@ const RelatedItems = ({ category, exceptId }: RelatedItemsProps) => {
         )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default observer(RelatedItems);
+export default observer(RelatedItems)

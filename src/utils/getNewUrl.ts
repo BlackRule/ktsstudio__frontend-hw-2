@@ -1,4 +1,4 @@
-import * as qs from 'qs';
+import * as qs from 'qs'
 
 type ValueOf<T> = T[keyof T];
 
@@ -7,6 +7,6 @@ export const getNewURL = (
   value: ValueOf<qs.ParsedQs>,
   prevParams: qs.ParsedQs
 ): string => {
-  const n = { ...prevParams, [paramName]: value };
-  return qs.stringify(n, { addQueryPrefix: true });
-};
+  const n = { ...prevParams, [paramName]: value }
+  return qs.stringify(n, { addQueryPrefix: true })
+}

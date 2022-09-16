@@ -1,11 +1,12 @@
-import styles from './Card.module.scss';
+import styles from './Card.module.scss'
 export type CardProps = {
-  title: React.ReactNode;
-  description: React.ReactNode;
   category?: React.ReactNode;
-  price?: React.ReactNode;
-  image: string; //consider renaming it to url
+  description: React.ReactNode;
+  image: string;
+  //consider renaming it to url
   onClick?: React.MouseEventHandler;
+  price?: React.ReactNode; 
+  title: React.ReactNode;
 };
 export const Card = ({
   image,
@@ -23,5 +24,5 @@ export const Card = ({
       <div className={styles.description}>{description}</div>
       <div className={styles.price}>${price}</div>
     </div>
-  );
-};
+  )
+}

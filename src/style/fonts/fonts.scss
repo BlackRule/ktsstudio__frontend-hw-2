@@ -4,7 +4,7 @@ $ffs: ("woff2":'woff2', 'woff':'woff2', 'ttf':'truetype');
 @each $fw in $fws {
   @font-face {
     font-family: "Eudoxus-Sans";
-    $p: './Eudoxus-Sans/font/';
+    $p: 'style/fonts/Eudoxus-Sans/font/';
     $src: null;
     $i: 1;
     @each $fe, $ff in $ffs {

@@ -1,7 +1,7 @@
-import { ProductModel } from '@models/products';
-import styles from './Product.module.scss';
-import { HTMLAttributes } from 'react';
-import { Button, ButtonSkin } from '@components/Button/Button';
+import { ProductModel } from '@models/products'
+import styles from './Product.module.scss'
+import { HTMLAttributes } from 'react'
+import { Button, ButtonSkin } from '@components/Button/Button'
 
 type ProductProps = React.PropsWithChildren<{
   product: ProductModel;
@@ -45,7 +45,7 @@ const Product = ({ product }: ProductProps) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product

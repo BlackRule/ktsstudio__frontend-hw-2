@@ -1,20 +1,19 @@
 TODO компонент Pages (стрелки троеточие и дизайн)
 TODO А в мобильной версии куда фильтр то деть?) В бургер меню? Но если так делать то Header надо засовывать в ProductsPage ибо там Store а Filter зависит от Store
   Если это не исправить то присутствует баг: если в адресе присутствуют параметры фильтра то юзер не может их поменять
-TODO Linter? Чтобы ; не было в концах строк
+TODO привести к единообразию имена. А не index.* и Component.* и мб кавычки single double
+TODO Было $p: './Eudoxus-Sans/font/' Стало $p: 'style/fonts/Eudoxus-Sans/font/' Исправить?
+TODO сделать чтоб .scss в конце не требовалось
+TODO тесты
+TODO storybook
+TODO %PUBLIC_URL% и тд как было в CRA public
+TODO см чтоб версия @types например реакта соответствовала версии реакта
 TODO шрифты возможно должен был каждый компонент себе импортить. Или надо в StoryBook поменять default шрифт или см. preview-head.html
 TODO стилизовать чекбокс
 TODO см TODO ВЕЗДЕ (не только здесь)
 TODO вынести повторяющиеся куски
-TODO привести к единообразию имена. А не index.* и Component.* и мб кавычки single double
-И Component.jsx и index.js кот-й экспортирует
+    И Component.jsx и index.js кот-й экспортирует
 TODO Посмотреть может зависимости для Storybook установил без флага -D (devDependencies)
--------tsconfig.paths.json---------
-//"@config/*": ["src/config/*"],
-//"@utils/*": ["src/utils/*"]
-//TODO rename to styles
-"@style/*": ["src/style/*"],
-----------------
 TODO сделать generateValueElement: (options: Option[]) => JSXElementConstructor<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>|string;
 TODO Make possible to click outside MDdown to close it. Handle isFocused somehow
 

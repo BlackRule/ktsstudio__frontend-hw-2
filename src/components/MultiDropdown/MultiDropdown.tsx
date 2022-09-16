@@ -4,10 +4,10 @@ import {
   HTMLAttributes,
   JSXElementConstructor,
   useState,
-} from 'react';
-import classNames from 'classnames';
-import styles from './MultiDropdown.module.scss';
-import { Button, ButtonSkin } from '@components/Button/Button';
+} from 'react'
+import classNames from 'classnames'
+import styles from './MultiDropdown.module.scss'
+import { Button, ButtonSkin } from '@components/Button/Button'
 
 export type Option = {
   key: string;
@@ -23,13 +23,13 @@ export type MultiDropdownProps = Omit<
   ComponentProps<typeof Button>,
   'onChange' | 'value'
 > & {
-  options: Option[];
-  value: Option[];
-  onChange: (value: Option[]) => void;
   /** Преобразовать выбранные значения в строку. Отображается в дропдауне в качестве выбранного значения */
   generateValueElement: (options: Option[]) => JSXElementConstructor<DivProps>;
-  valueProps?: DivProps;
+  onChange: (value: Option[]) => void;
+  options: Option[];
   optionsProps?: DivProps;
+  value: Option[];
+  valueProps?: DivProps;
 };
 
 export const MultiDropdown = ({
@@ -42,13 +42,13 @@ export const MultiDropdown = ({
   optionsProps,
   ...props
 }: MultiDropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   function includes(opts: Option[], opt: Option) {
-    return opts.some((o) => opt.key === o.key);
+    return opts.some((o) => opt.key === o.key)
   }
 
-  const Value = generateValueElement(value);
+  const Value = generateValueElement(value)
   return (
     <Button
       {...props}
@@ -59,9 +59,9 @@ export const MultiDropdown = ({
         {...valueProps}
         className={classNames(valueProps?.className, styles.value)}
         onClick={(e) => {
-          setIsOpen((v) => !v);
+          setIsOpen((v) => !v)
           if (valueProps?.onClick) {
-            valueProps.onClick(e);
+            valueProps.onClick(e)
           }
         }}
       />
@@ -78,9 +78,9 @@ export const MultiDropdown = ({
               })}
               onClick={() => {
                 if (!includes(value, option)) {
-                  onChange([...value, option]);
+                  onChange([...value, option])
                 } else {
-                  onChange(value.filter((o) => o.key !== option.key));
+                  onChange(value.filter((o) => o.key !== option.key))
                 }
               }}
             >
@@ -90,5 +90,5 @@ export const MultiDropdown = ({
         </div>
       ) : null}
     </Button>
-  );
-};
+  )
+}

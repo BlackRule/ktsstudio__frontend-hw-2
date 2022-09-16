@@ -1,7 +1,7 @@
-import { Loader, LoaderSize } from '@components/Loader/Loader';
-import styles from './Button.module.scss';
+import { Loader, LoaderSize } from '@components/Loader/Loader'
+import styles from './Button.module.scss'
 
-const classNames = require('classnames');
+const classNames = require('classnames')
 
 export enum ButtonSkin {
   primary = 'primary',
@@ -25,7 +25,7 @@ export const Button = ({
   skin = ButtonSkin.primary,
   ...props
 }: ButtonProps) => {
-  props = { ...props, disabled: loading || props.disabled };
+  props = { ...props, disabled: loading || props.disabled }
   return (
     <button
       {...props}
@@ -39,5 +39,5 @@ export const Button = ({
       <Loader loading={loading} size={LoaderSize.s} className={styles.loader} />
       {children}
     </button>
-  );
-};
+  )
+}

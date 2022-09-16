@@ -1,33 +1,33 @@
-import { RatingApi, RatingModel, normalizeRating } from './rating';
+import { RatingApi, RatingModel, normalizeRating } from './rating'
 
 export type ProductApi = {
-  id: number;
-  title: string;
-  description: string;
   category: string;
-  price: number;
+  description: string;
+  id: number;
   image: string;
+  price: number;
   rating: RatingApi;
+  title: string;
 };
 
 export type ProductModel = {
-  id: number;
-  title: string;
-  description: string;
   category: string;
-  price: number;
+  description: string;
+  id: number;
   image: string;
+  price: number;
   rating: RatingModel;
+  title: string;
 };
 
 export const normalizeProduct = (from: ProductApi): ProductModel => {
   return {
-    id: from.id,
-    title: from.title,
-    description: from.description,
     category: from.category,
-    price: from.price,
+    description: from.description,
+    id: from.id,
     image: from.image,
+    price: from.price,
     rating: normalizeRating(from.rating),
-  };
-};
+    title: from.title,
+  }
+}

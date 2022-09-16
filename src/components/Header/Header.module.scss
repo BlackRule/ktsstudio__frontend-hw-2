@@ -1,4 +1,4 @@
-@use '@style/style';
+@use '@style/style.scss';
 
 @mixin bottom-line {
   border-bottom: 1px #{style.$color-line} solid;

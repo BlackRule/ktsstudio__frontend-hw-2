@@ -1,14 +1,14 @@
-@import '@style/fonts/fonts';
+@import "style/fonts/fonts";
 
-body {
+body{
   font-family: Eudoxus-Sans, sans-serif;
   font-weight: 500;
 }
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-a {
+a{
   color: unset;
 }

@@ -1,5 +1,5 @@
-import { Loader } from '../Loader/Loader';
-import styles from './WithLoader.module.scss';
+import { Loader } from '../Loader/Loader'
+import styles from './WithLoader.module.scss'
 
 export type WithLoaderProps = React.PropsWithChildren<{
   loading: boolean;
@@ -11,5 +11,5 @@ export const WithLoader = ({ children, loading = true }: WithLoaderProps) => {
       <div className={styles.backdrop} />
       <Loader loading={loading} className={styles.WithLoader__Loader} />
     </div>
-  );
-};
+  )
+}
