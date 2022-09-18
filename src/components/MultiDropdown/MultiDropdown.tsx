@@ -1,5 +1,4 @@
 import {
-  ComponentProps,
   DetailedHTMLProps,
   HTMLAttributes,
   JSXElementConstructor,
@@ -7,7 +6,6 @@ import {
 } from 'react'
 import classNames from 'classnames'
 import styles from './MultiDropdown.module.scss'
-import { Button, ButtonSkin } from '@components/Button/Button'
 
 export type Option = {
   key: string;
@@ -19,13 +17,12 @@ type DivProps = DetailedHTMLProps<
   HTMLDivElement
 >;
 
-export type MultiDropdownProps = Omit<
-  ComponentProps<typeof Button>,
-  'onChange' | 'value'
-> & {
+export type MultiDropdownProps = Omit<DivProps,'onChange'> & {
   /** Преобразовать выбранные значения в строку. Отображается в дропдауне в качестве выбранного значения */
+  disabled?: boolean
   generateValueElement: (options: Option[]) => JSXElementConstructor<DivProps>;
   onChange: (value: Option[]) => void;
+  openUpwards?:boolean;
   options: Option[];
   optionsProps?: DivProps;
   value: Option[];
@@ -40,6 +37,7 @@ export const MultiDropdown = ({
   disabled = false,
   valueProps,
   optionsProps,
+  openUpwards = false,
   ...props
 }: MultiDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -50,9 +48,8 @@ export const MultiDropdown = ({
 
   const Value = generateValueElement(value)
   return (
-    <Button
+    <div
       {...props}
-      skin={ButtonSkin.secondary}
       className={classNames(styles.MultiDropdown, props.className)}
     >
       <Value
@@ -68,7 +65,7 @@ export const MultiDropdown = ({
       {isOpen && !disabled ? (
         <div
           {...optionsProps}
-          className={classNames(styles.optionsParent, optionsProps?.className)}
+          className={classNames(styles.optionsParent,styles[openUpwards?'openUpwards':'openDownwards'], optionsProps?.className)}
         >
           {options.map((option) => (
             <div
@@ -89,6 +86,6 @@ export const MultiDropdown = ({
           ))}
         </div>
       ) : null}
-    </Button>
+    </div>
   )
 }

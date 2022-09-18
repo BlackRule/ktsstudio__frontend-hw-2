@@ -13,10 +13,8 @@ import { normalizeProduct, ProductModel } from '@models/products'
 import { log } from '@utils/console'
 import rootStore from '@store/RootStore'
 import ProductService from '@api/ProductService'
+import { BASE_URL, elementsPerPage } from '@config/config'
 
-const BASE_URL = 'https://fakestoreapi.com'
-
-const elementsPerPage = 6
 
 export default class ProductsStore implements IProductsStore, ILocalStore {
   //fullList->categoriesFilteredList->searchFilteredList->pagedList

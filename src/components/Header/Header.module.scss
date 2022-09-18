@@ -18,6 +18,9 @@
     padding-top: 20px;
     margin-bottom: 50px;
   }
+  &>:first-child{
+    padding-bottom: 0;
+  }
 }
 
 .Header__inner {

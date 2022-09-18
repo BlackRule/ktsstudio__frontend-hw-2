@@ -5,9 +5,60 @@
 .page-number{
   min-width: 38px;
   min-height: 42px;
-  border: 1px solid black;
+  border: 1px solid #F9F9F9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.right-arrow,.left-arrow{
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.right-arrow{
+  background-image: url('./img/right_black.svg');
+  &.disabled{
+    background-image: url('./img/right_gray.svg');
+
+  }
+}
+
+.left-arrow{
+  background-image: url('./img/left_black.svg');
+  &.disabled{
+    background-image: url('./img/left_gray.svg');
+
+  }
 }
 
 .selected{
   background-color: #{style.$color-primary};
+  color: white;
+}
+
+#additionalNumbersToggle{
+  display: none;
+}
+
+.additionalNumbers{
+  position: relative;
+}
+
+.options{
+  background-color: white;
+  flex-direction: column;
+  border: 1px solid black;
+  cursor: pointer;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  display: none;
+  #additionalNumbersToggle:checked~&{
+    display: flex;
+  }
+  overflow-y: auto;
+  max-height: 100px;
 }

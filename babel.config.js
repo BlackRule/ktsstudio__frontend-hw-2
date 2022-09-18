@@ -1,4 +1,4 @@
-const { toBabelAliases } = require("./tsconfig.paths.js")
+const { toBabelAliases } = require('./tsconfig.paths.js')
 const plugins = [
   [
     'module-resolver',

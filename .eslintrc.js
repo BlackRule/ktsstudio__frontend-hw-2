@@ -1,5 +1,4 @@
-const path = require('path')
-const { toEslintAliases } = require("./tsconfig.paths.js")
+const { toEslintAliases } = require('./tsconfig.paths.js')
 module.exports = {
   env: {
     browser: true,

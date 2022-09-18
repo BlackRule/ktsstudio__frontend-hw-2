@@ -5,6 +5,7 @@
   align-items: center;
   gap: 12px;
   @include style.drop-shadow;
+  font-weight: 500;
 }
 .icon{
   width: 30px;

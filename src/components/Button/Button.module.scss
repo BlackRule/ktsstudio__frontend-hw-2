@@ -5,12 +5,17 @@
   gap: 5px;
   align-items: center;
   padding: 16px 28px;
+  font-family: inherit;
   font-weight: 700;
   font-size: 18px;
   justify-content: center;
 
   &:disabled {
     background-color: #D9D9D9;
+  }
+
+  &:hover {
+    filter: opacity(0.7);
   }
 
   @media(max-width: 1023px) {
@@ -24,32 +29,14 @@
   left: 14px;
 }
 
-/*to prevent element from affecting children:*/
-@mixin opacity($bg-color,$color) {
-  background-color: rgba($bg-color, 0.7);
-  color: rgba($color, 0.7);
-}
-
 .button-skin_primary {
   background-color: #{style.$color-primary};
   color: #{style.$color-white};
   border: 0;
-
-  &:hover {
-    @include opacity(style.$color-primary, style.$color-white)
-  }
-  &:hover>*{
-    background-color: red;
-    //Fixme: https://github.com/BlackRule/ktsstudio__frontend-hw-2/issues/3
-    color: black;
-  }
 }
 
 .button-skin_secondary {
   background-color: #{style.$color-white};
   color: #{style.$color-black};
   border: 1px solid #{style.$color-line};
-  &:hover {
-    @include opacity(style.$color-white, style.$color-black)
-  }
 }
