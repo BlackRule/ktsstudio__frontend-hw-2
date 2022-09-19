@@ -75,7 +75,7 @@ const PageNumbers = ({
         }
         </div>
       </div>:null}
-      {jsxForPageLink(() => onChange?.(totalPages-1),paramName,totalPages-1,curParams,currentPage)}
+      {totalPages>3?jsxForPageLink(() => onChange?.(totalPages-1),paramName,totalPages-1,curParams,currentPage):null}
       {jsxForForwardBackLink(onChange, paramName, curParams, currentPage,totalPages,true)}
     </div>
   )

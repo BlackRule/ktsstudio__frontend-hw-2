@@ -10,6 +10,7 @@
   top: 0;
   background-color: white;
   margin-bottom: 100px;
+  z-index: 1;
   & a {
     text-decoration: none;
   }
@@ -37,7 +38,6 @@
   display: flex;
   justify-content: space-between;
   @media(max-width: 1023px) {
-    @include bottom-line;
     padding-bottom: 15px;
     margin-bottom: 5px;
     width: 100%;

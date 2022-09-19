@@ -26,16 +26,13 @@
 .top-bar{
   display: flex;
   gap: 29px;
+  @media(max-width: 495px){
+    gap: 4px;
+  }
   width: 100%;
 }
 .SearchBar{
   flex-grow: 1;
-}
-.Filter{
-  @media(max-width: 1023px){
-    //fixme https://github.com/BlackRule/ktsstudio__frontend-hw-2/issues/4
-    display: none!important;
-  }
 }
 .total-product{
   display: flex;

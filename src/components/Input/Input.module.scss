@@ -7,6 +7,10 @@
   @media(max-width: 1023px){
     padding: 14px;
   }
+  @media(max-width: 444px){
+    padding: 0;
+    padding-left: 5px;
+  }
   @media(max-width: 375px){
     //fixme https://github.com/BlackRule/ktsstudio__frontend-hw-2/issues/2
     max-width: 181px;

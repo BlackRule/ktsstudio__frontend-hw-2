@@ -9,7 +9,7 @@ const SearchBar = ({
   handleSearch,
   ...props
 }: HTMLAttributes<HTMLDivElement> & { handleSearch: (v: string) => void }) => {
-  const { width, height: _ } = useWindowSize()
+  const { width } = useWindowSize()
   const [value, setValue] = useState('')
   return (
     <div

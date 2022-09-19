@@ -16,9 +16,9 @@ const Filter = ({ selectedOptions, onChange, ...props }: FilterProps) => {
   const gve=() => {
     //fixme any
     return (props:any) => (
-      <Button loading={isLoading} {...props} skin={'secondary'}>
+      <Button loading={isLoading} {...props} skin={'secondary'} className={styles.value}>
         <div className={styles.icon} />
-        <span>Filter</span>
+        <span className={styles.text}>Filter</span>
       </Button>
     )
   }
@@ -32,7 +32,6 @@ const Filter = ({ selectedOptions, onChange, ...props }: FilterProps) => {
       value={selectedOptions}
       optionsProps={{ className: styles.options }}
       valueProps={{
-        className: styles.value,
         onClick: () => {
           if (!clickedAtLeastOnce) {
             //fixme
