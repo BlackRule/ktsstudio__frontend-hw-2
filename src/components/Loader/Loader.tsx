@@ -1,6 +1,5 @@
 import styles from './Loader.module.scss'
-
-const classNames = require('classnames')
+import classNames from 'classnames'
 
 export enum LoaderSize {
   l = 'l',

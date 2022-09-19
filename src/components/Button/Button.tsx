@@ -1,7 +1,6 @@
 import { Loader, LoaderSize } from '@components/Loader/Loader'
 import styles from './Button.module.scss'
-
-const classNames = require('classnames')
+import classNames from 'classnames'
 
 export enum ButtonSkin {
   primary = 'primary',

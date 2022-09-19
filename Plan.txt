@@ -1,19 +1,59 @@
-TODO компонент Pages (стрелки троеточие и дизайн)
-TODO А в мобильной версии куда фильтр то деть?) В бургер меню? Но если так делать то Header надо засовывать в ProductsPage ибо там Store а Filter зависит от Store
-  Если это не исправить то присутствует баг: если в адресе присутствуют параметры фильтра то юзер не может их поменять
-TODO привести к единообразию имена. А не index.* и Component.* и мб кавычки single double
-TODO Было $p: './Eudoxus-Sans/font/' Стало $p: 'style/fonts/Eudoxus-Sans/font/' Исправить?
-TODO сделать чтоб .scss в конце не требовалось
 TODO тесты
 TODO storybook
+tscheck всего проекта
+TODO шрифты возможно должен был каждый компонент себе импортить. Или надо в StoryBook поменять default шрифт или см. preview-head.html
+TODO привести к единообразию имена. Не то index.* то Component.*
+    А Component.jsx и index.js кот-й экспортирует
+TODO Было $p: './Eudoxus-Sans/font/' Стало $p: 'style/fonts/Eudoxus-Sans/font/' Исправить?
+TODO сделать чтоб .scss в конце не требовалось
 TODO %PUBLIC_URL% и тд как было в CRA public
 TODO см чтоб версия @types например реакта соответствовала версии реакта
-TODO шрифты возможно должен был каждый компонент себе импортить. Или надо в StoryBook поменять default шрифт или см. preview-head.html
 TODO стилизовать чекбокс
 TODO см TODO ВЕЗДЕ (не только здесь)
 TODO вынести повторяющиеся куски
-    И Component.jsx и index.js кот-й экспортирует
 TODO Посмотреть может зависимости для Storybook установил без флага -D (devDependencies)
 TODO сделать generateValueElement: (options: Option[]) => JSXElementConstructor<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>|string;
 TODO Make possible to click outside MDdown to close it. Handle isFocused somehow
-
+TODO проверить со strict mode
+Замечания
++    relatedItemsStore.getItems({ category: category, exceptId: exceptId });
+{key: key} -> { key }
+--
+дебаунс в отдельный файлик
+--
++      onChange={(e) => onChange(e.target.value)}
+оптимизацию не забывай, useCallback нужен
+--
+<Link to={'#'}>Services</Link>
+оставь линку просто / или умышленно задай ссылку на 404 страницу
+--
++.loader{
++  position: absolute;
++  left: 14px;
+не забываем про свойство top: 0, чтобы позиционирование более очевидно проводилось
+--
+только не path="", а просто index или index={true}
+А вообще предлагаю просто на список продуктов редиректить, если попали на роут /product каким-то образом
+--
+getNewURL =()=>
+всегда оставляем комменты к функциям-утилитам + желательно ожидаемый вход/ожидаемый выход
+--
+PagePadding - этого компонента не должно быть, тебе надо создать Layout, в котором ты эти стили собственно будешь задавать
+--
+зачем селектор по id? старайся только селекторы по классу делать
+(для label for но да мб проблемы)
+--
+селекторы по тегам стараемся никогда не использовать, может вызвать конфликты в дочерних селекторах
+--
+почитай про axios.create и про baseUrl
+Предлагаю в отдельную утилиту вынести все запросы к серверу или вообще вынести всё в хук
+выноси такие миксины в отдельные файлы, чтобы его можно было переиспользовать. Предлагаю styles/mixins.scss
+ все переменные-константы называем через uppercase: ELEMENTS_PER_PAGE
+ вообще принято именовать классы компонентов с маленькой буквы
+ --
+ style.$color-white
+ всё-таки посоветовал бы @import использовать, можно будет цветами прямо так пользоваться, без указания style
+ --
+ +export const Card = ({image,title,description,price=null,category=null,onClick}:CardProps) => {
+ не забывай про оптимизацию, React.memo
+ --

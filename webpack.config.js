@@ -52,7 +52,7 @@ function getCSSLoaders(wModules = true) {
 module.exports = {
   devServer: {
     historyApiFallback: true,
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     port: 9002,
   },
   devtool: isProd ? 'hidden-source-map' : 'eval-source-map',

@@ -3,7 +3,7 @@ export type CardProps = {
   category?: React.ReactNode;
   description: React.ReactNode;
   image: string;
-  //consider renaming it to url
+  //TODO consider renaming it to url
   onClick?: React.MouseEventHandler;
   price?: React.ReactNode; 
   title: React.ReactNode;
