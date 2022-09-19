@@ -1,12 +1,30 @@
 import { ProductModel } from '@models/products'
 import styles from './Product.module.scss'
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, useState } from "react"
 import { Button, ButtonSkin } from '@components/Button/Button'
 
 type ProductProps = React.PropsWithChildren<{
   product: ProductModel;
 }> &
   HTMLAttributes<HTMLDivElement>;
+
+function Description(props: { description: string }) {
+  const [fullText,setFullText]=useState(false)
+  const ellipsis = props.description.length > 176 && !fullText
+  const txt=ellipsis ?
+    props.description.slice(0,176)+'...':
+    props.description
+  return (
+    <div className={styles.description}>
+      <span>{txt}</span>
+      {
+        ellipsis ?
+          <span onClick={()=>setFullText(true)} className={styles.readMore}>Read More</span> :
+          null
+      }
+    </div>
+  )
+}
 
 const Product = ({ product }: ProductProps) => {
   return (
@@ -34,10 +52,7 @@ const Product = ({ product }: ProductProps) => {
             style={{ backgroundColor: '#D8DBE0' }}
           ></div>
         </div>
-        <div className={styles.description}>
-          {product.description}
-          {/*TODO Read More*/}
-        </div>
+        <Description description={product.description} />
         <div className={styles.price}>${product.price}</div>
         <div className={styles.buttons}>
           <Button>Buy Now</Button>
